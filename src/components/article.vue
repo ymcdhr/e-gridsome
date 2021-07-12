@@ -92,7 +92,7 @@ export default {
         },
 
         async onPublish() {
-            const url = api.strapiCreateBlog
+            const url = api.strapiCreateBlog + '/' + this.article.id
             const login = Cookie.get("login")
             const { id, username, token } = JSON.parse(login)
 
@@ -108,7 +108,7 @@ export default {
 
             try{
                 const res = await request({
-                    method: "POST",
+                    method: "PUT",
                     url,
                     data,
                     // headers: {
