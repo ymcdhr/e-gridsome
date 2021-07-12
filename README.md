@@ -466,3 +466,8 @@ $nextTick 使用场景
 部署过后，stiapi 更新数据之后自动更新 gridsome 数据
 
 使用插件 vercel 
+
+相关链接：
+- githu api：https://docs.github.com/en/rest
+- element-ui：https://element.eleme.cn/#/zh-CN/component/installation
+- v-blog：https://github-laziji.github.io/#/user/new/main
