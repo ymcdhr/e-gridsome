@@ -61,7 +61,9 @@ export default {
             type: 'error'
           })
 
-          location.href=location.origin + "/new?username=ymcdhr"
+          if(typeof location !== "undefined")
+            location.href=location.origin + "/new?username=ymcdhr"
+          
           return
         }
 
