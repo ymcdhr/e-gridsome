@@ -81,7 +81,11 @@ export const com = {
             return user ? user : {}
         }
         catch(e){
-            return parse(location.search)
+            if(typeof location !== "undefined"){
+                return parse(location.search)
+            }
+
+            return {}
         }
     }
 }
