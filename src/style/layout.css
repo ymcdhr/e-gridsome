@@ -1,0 +1,324 @@
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1.5tahoma, arial, \5b8b\4f53;
+}
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: couriernew, courier, monospace;
+}
+small {
+  font-size: 12px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  border: 0;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #000000;
+  background-color: #eef1f6;
+}
+.layout {
+  width: 100%;
+  margin: 0 auto;
+}
+.layout > .header {
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-size: 100%;
+  background-position-y: 25%;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  position: relative;
+}
+.layout > .header .user {
+  margin: 0 auto;
+  margin-top: -20px;
+  text-align: center;
+  position: relative;
+}
+.layout > .header .user .el-image {
+  width: 80px;
+  height: 80px;
+}
+.layout > .header .user .el-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.layout > .header .user .el-image .el-image__error,
+.layout > .header .user .el-image .el-image__placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.layout > .header .user .name {
+  height: 35px;
+  font-size: 26px;
+  font-weight: bold;
+}
+.layout > .header .user .description {
+  height: 36px;
+  max-width: 460px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.layout > .header .cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.layout > .content {
+  position: relative;
+}
+.layout > .content .box {
+  min-height: 607px;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: -50px;
+}
+.layout > .content .box > .header {
+  height: 60px;
+  line-height: 60px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  text-align: right;
+}
+.layout > .content .box > .header button {
+  border: none;
+}
+.layout > .content .box > .cnt {
+  margin-top: 10px;
+}
+.layout > .content .box > .cnt .aside {
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #eee;
+}
+.layout > .content .box > .cnt .main {
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 0;
+}
+.layout > .content .box > .cnt .main nav[role='navigation'] {
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  background-color: #ffffff;
+  float: left;
+  border-radius: 2px;
+}
+.layout > .content .box > .cnt .main nav[role='navigation'] a {
+  margin: 0 5px;
+  display: inline-block;
+  min-width: 30px;
+  border-radius: 2px;
+  line-height: 28px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #f4f4f5;
+  color: #606266;
+  padding: 0 4px;
+  font-size: 13px;
+}
+.layout > .content .box > .cnt .main nav[role='navigation'] a:hover {
+  background-color: #409EFF;
+  color: #ffffff;
+}
+.layout > .content .box > .cnt .main nav[role='navigation'] a.active {
+  background-color: #409EFF;
+  color: #ffffff;
+}
+.layout > .footer {
+  height: 60px;
+  line-height: 60px;
+  margin-top: 10px;
+  padding: 0 20px;
+  background-color: #ffffff;
+}
+.layout .img .el-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+.layout .img .image-slot {
+  font-size: 20px;
+}
+.blogs > .header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.blogs > .cnt .el-card {
+  margin-bottom: 10px;
+}
+.blogs > .cnt .el-card > .el-card__header {
+  font-size: 18px;
+  position: relative;
+}
+.blogs > .cnt .el-card > .el-card__header .user-logo {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -14px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  line-height: 32px;
+}
+.blogs > .cnt .el-card > .el-card__body .text {
+  color: #666666;
+  font-style: oblique;
+}
+.blogs > .cnt .el-card > .el-card__body .text .update-time {
+  font-style: initial;
+  margin-bottom: 15px;
+}
+.page-login .content {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 300px;
+  padding: 20px;
+  background-color: #dddddd;
+  border-radius: 5px;
+}
+.social > .header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.social > .cnt {
+  overflow: hidden;
+}
+.social > .cnt > .el-card:nth-child(3n+1) {
+  margin-left: 0;
+}
+.social > .cnt > .el-card {
+  overflow: hidden;
+  width: 254.4px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  float: left;
+}
+.social > .cnt > .el-card > .el-card__header {
+  font-size: 18px;
+}
+.social > .cnt > .el-card > .el-card__body .img {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+}
+.social > .cnt > .el-card > .el-card__body .img img {
+  width: 100%;
+}
+.social > .cnt > .el-card > .el-card__body .text {
+  color: #666666;
+  font-style: oblique;
+}
+.social > .cnt > .el-card > .el-card__body .text .update-time {
+  font-style: initial;
+  margin-bottom: 15px;
+}
+.social > .cnt > .el-pagination {
+  width: 100%;
+  float: left;
+  padding: 10px 0;
+  background-color: #fff;
+}
+.open > .header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.open > .cnt .el-card {
+  margin-bottom: 10px;
+}
+.open > .cnt .el-card > .el-card__header {
+  font-size: 18px;
+}
+.open > .cnt .el-card > .el-card__body .text {
+  color: #666666;
+  font-style: oblique;
+}
+.open > .cnt .el-card > .el-card__body .text .update-time {
+  font-style: initial;
+  margin-bottom: 15px;
+}
+.open > .cnt .el-card > .el-card__body .btns {
+  margin-top: 20px;
+}
+.open > .cnt .el-card > .el-card__body .btns button {
+  border: none;
+  cursor: initial;
+}
+.open > .cnt .el-card > .el-card__body .btns button:hover {
+  color: #606266;
+  background-color: #fff;
+}
+.open > .cnt .el-card > .el-card__body .btns button:first-child {
+  padding-left: 0;
+}
+.open > .cnt .el-pagination {
+  padding: 10px 0;
+  background-color: #fff;
+}
+@media screen and (max-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+  body {
+    font-size: 24px;
+  }
+  .layout .header {
+    height: 6rem;
+  }
+}
