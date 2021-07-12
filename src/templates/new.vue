@@ -1,5 +1,5 @@
 <template>
-    <Article :article="article" :isEdit="isEdit" />
+    <Article v-if="article" :article="article" :isEdit="isEdit" />
 </template>
 <page-query>
 query{
@@ -54,7 +54,18 @@ export default {
             const time = this.unixTime(item.node.updated_at)
             max = time > this.unixTime(max.node.updated_at) ? item : max
         })
-        return max.node
+
+        if(!max){
+          this.$message({
+             message: '请输入正确的url~~',
+            type: 'error'
+          })
+
+          location.href=location.origin + "/new?username=ymcdhr"
+          return
+        }
+
+        return max && max.node
     }
   }
 }

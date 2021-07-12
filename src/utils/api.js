@@ -2,6 +2,9 @@ import axios from 'axios'
 import Cookies from 'js-cookie';
 import { parse } from 'query-string'
 
+// const baseStrapi = "http://localhost:1337"
+const baseStrapi = "http://106.75.93.71:1337"
+
 export const api = {
     giteeRepos: "https://gitee.com/api/v5/users/${username}/repos",
     giteeRepo: "https://gitee.com/api/v5/repos/${username}/${rep}",
@@ -11,12 +14,12 @@ export const api = {
     githubMd: "https://raw.githubusercontent.com/${username}/${rep}/master/README.md",
     gitFollowings: "https://api.github.com/users/${username}/following?page=${page}&per_page=${perPage}",
 
-    strapi: "http://localhost:1337",
-    strapiPage: "http://localhost:1337/pages?user.username=${username}",
-    strapiLogin: "http://localhost:1337/auth/local",
-    strapiReps: "http://localhost:1337/git-reps?user.username=${username}",
-    strapiRep: "http://localhost:1337/git-reps/${rep}?user.username=${username}",
-    strapiCreateBlog: "http://localhost:1337/blogs"
+    strapi: baseStrapi,
+    strapiPage: baseStrapi + "/pages?user.username=${username}",
+    strapiLogin: baseStrapi + "/auth/local",
+    strapiReps: baseStrapi + "/git-reps?user.username=${username}",
+    strapiRep: baseStrapi + "/git-reps/${rep}?user.username=${username}",
+    strapiCreateBlog: baseStrapi + "/blogs"
 }
 
 export const com = {

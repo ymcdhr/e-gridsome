@@ -40,7 +40,12 @@ export default {
     props: {
         article: {
             type: Object,
-            require: true
+            require: true,
+            default: {
+                updated_at:"",
+                published_at:"",
+                content:""
+            }
         },
         isEdit: false
     },

@@ -20,7 +20,8 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL: 'http://localhost:1337',// 接口地址，本地调试时是localhost
+        // apiURL: 'http://localhost:1337',// 接口地址，本地调试时是localhost
+        apiURL: process.env.GRIDSOME_API_URL,//'http://106.75.93.71:1337',// 线上环境
         queryLimit: 1000, // Defaults to 100
         contentTypes: ['pages','blogs'], // 数据集合名称，相当于从 api 取数据：http://localhost:1337/blogs
         typeName: 'Strapi',  // 默认的名字
