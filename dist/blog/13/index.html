@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>首页 - Grdsome 博客</title><meta name="gridsome:hash" content="87002c5fa157b6e786d19711f6bffff4b0d9c799"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.9bb7ffafafc09ac851d81afb65b8ef59.png"><link rel="preload" href="/assets/css/8.styles.8d7e1c32.css" as="style"><link rel="preload" href="/assets/js/app.aa04e74c.js" as="script"><link rel="preload" href="/assets/js/page--src-templates-blog-vue.a3da5a2e.js" as="script"><link rel="prefetch" href="/assets/js/page--node-modules-gridsome-app-pages-404-vue.0ddd1ab5.js"><link rel="prefetch" href="/assets/js/page--src-templates-blog-list-vue.8a24ccb4.js"><link rel="prefetch" href="/assets/js/page--src-templates-new-vue.8b4559ca.js"><link rel="prefetch" href="/assets/js/page--src-templates-project-list-vue.ba063837.js"><link rel="prefetch" href="/assets/js/page--src-templates-project-vue.7a542983.js"><link rel="prefetch" href="/assets/js/page--src-templates-social-vue.3a209dab.js"><link rel="stylesheet" href="/assets/css/8.styles.8d7e1c32.css"><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div id="app" data-server-rendered="true" class="layout"><header class="header" style="background-image:;"><div class="cover"></div><div class="user"><div class="el-image"><div class="el-image__placeholder"></div><!----></div><div class="name"></div><div class="description"></div></div></header><content class="content"><section class="el-container box is-vertical"><header class="el-header header" style="height:60px;"><div class="el-row"><div class="el-col el-col-24"><a><button type="button" class="el-button el-button--default"><!----><i class="el-icon-edit"></i><span>修改文章</span></button></a></div></div></header><section class="el-container cnt"><aside class="el-aside aside" style="width:200px;"><ul role="menubar" class="menu el-menu" style="background-color:;"><a href="/new?username=undefined"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left:20px;color:;background-color:;"><i class="el-icon-menu"></i><span>最新动态</span></li></a><a href="/blog-list"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left:20px;color:;background-color:;"><i class="el-icon-notebook-2"></i><span>博客列表</span></li></a><a href="/social"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left:20px;color:;background-color:;"><i class="el-icon-bangzhu"></i><span>关注账号</span></li></a><a href="/project-list"><li role="menuitem" tabindex="-1" class="el-menu-item" style="padding-left:20px;color:;background-color:;"><i class="el-icon-orange"></i><span>我的项目</span></li></a></ul></aside><main class="el-main main"><div class="article"><div class="markdown-title"><div class="title">
+            前端工程化6：Webpack5配置示例，看看这些最佳实践
+        </div><div class="el-divider el-divider--horizontal"><!----></div><div class="time"><div class="updated">更新时间：2021/7/12</div><div class="published">发布时间：2021/7/12</div></div></div><div class="markdown-cnt"><!----><div class="cnt"><!----><div class="markdown-here-wrapper"><h1>1. 为什么使用Webpack（应用场景）</h1>
+<ol>
+<li>支持新特性语言版本的编译</li>
+<li>针对javascript模块化打包</li>
+<li>针对所有资源，例如样式、图片、字体等进行模块化</li>
+</ol>
+<p>对于1、2两点，grunt、gulp等构建工具可以很好的解决，但是无法解决第3点。Webpack能够解决前端整体的模块化能力。</p>
+<h1>2. 具备的能力</h1>
+<ul>
+<li>模块打包器（Module bundler）—— 本身支持js模块化</li>
+<li>加载器（loader） —— 利用babel等进行语言特性编译，转换</li>
+<li>代码拆分（Code Splitting）—— 文件按需加载</li>
+<li>资源模块（Asset Module） —— 支持加载css、字体等资源</li>
+</ul>
+<h1>3. 基本配置</h1>
+<h2>3.1 安装</h2>
+<pre><code>npm install webpack --save-dev
+npm install webpack-cli --save-dev
+</code></pre>
+<h2>3.2 入口文件：webpack.config.js</h2>
+<h4>配置：mode</h4>
+<ol>
+<li>production 生产模式下，Webpack 会自动优化打包结果；（例如：代码的压缩混淆等）</li>
+<li>development 开发模式下，Webpack 会自动优化打包速度，添加一些调试过程中的辅助；</li>
+<li>none 模式下，Webpack 就是运行最原始的打包，不做任何额外处理；</li>
+</ol>
+<h4>配置：entry</h4>
+<p>entry 可以是相对路径，也可以是绝对路径</p>
+<pre><code>// entry 可以是多入口
+entry: {
+    index: './src/pages/index/index.js',
+    album: './src/pages/album/album.js',
+    work: './src/pages/work/work.js'
+},
+</code></pre>
+<h4>配置：output</h4>
+<p>output 必须是绝对路径</p>
+<pre><code>entry: {
+    index: './src/main.js'
+},
+output: {
+    filename: '[name]-[contenthash:8].bundle.js',// contenthash:8最常用，用于避免缓存问题
+    path: path.join(__dirname, 'dist')
+},
+</code></pre>
+<h4>配置：cache</h4>
+<p>是否打开构建缓存</p>
+<h2>3.3 资源加载逻辑</h2>
+<p>可以将js作为入口文件，在js中import css等资源</p>
+<ul>
+<li>js驱动整个前端应用</li>
+<li>符合资源加载逻辑，js需要这些资源</li>
+<li>保证前端项目的开发资源不缺失</li>
+</ul>
+<p><img src="/img/bVcS3il" alt=""></p>
+<p>webpack兼容的几种模块化标准：ES Modules、AMD、COmmonJS</p>
+<p>webpack加载模块的几种方式：</p>
+<ul>
+<li>@import，@import(css)文件时</li>
+<li>css中的background:url()函数</li>
+<li>html中src属性、a标签的href（需要配置）</li>
+</ul>
+<pre><code class="language-js">{
+    <span class="hljs-attr">test</span>: <span class="hljs-regexp">/.html$/</span>,
+    <span class="hljs-attr">use</span>: {
+        <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;html-loader&#x27;</span>,
+        <span class="hljs-attr">options</span>: {
+            <span class="hljs-attr">attrs</span>: [<span class="hljs-string">&#x27;img:src&#x27;</span>, <span class="hljs-string">&#x27;a:href&#x27;</span>]
+        }
+    }
+}
+</code></pre>
+<h2>3.4 loader/plugin 对比，自定义实现 loader/plugin</h2>
+<ul>
+<li>loader：用于资源加载并处理各种语言的转换/编译（例如将es6+/ts转换为js，css加载等）；</li>
+<li>plugin：用于资源加载以外的其他打包/压缩/文件处理等功能；</li>
+</ul>
+<p>参考文章：前端工程化7</p>
+<h2>3.5 loader加载资源文件</h2>
+<h4>loader：大致分为三类</h4>
+<ol>
+<li>编译转换</li>
+<li>文件操作</li>
+<li>代码检查</li>
+</ol>
+<h4>loader：css样式编译（注意loader顺序，css-loader第一个执行）</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install css-loader --save-dev
+&gt; npm install style/core --save-dev
+</code></pre>
+<ul>
+<li>配置：</li>
+</ul>
+<pre><code>  module: {
+    rules: [
+      {
+        test: /.css$/, // 匹配文件
+        use: [// use指定使用到的loader
+          'style-loader', // 将css-loader转换后的结果放到style标签里面
+          'css-loader'    // 先执行css-loader，而且是从后往前执行，所以需要放到下面 
+        ]
+      }
+    ]
+  }
+</code></pre>
+<h4>loader：编译ES6+ =&gt; babel</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install babel-loader --save-dev         =&gt; babel 转换平台
+&gt; npm install @babel/core --save-dev          =&gt; babel 核心模块
+&gt; npm install @babel/preset-env --save-dev    =&gt; babel 转换语言包，env表示es6+全量包
+</code></pre>
+<ul>
+<li>配置：</li>
+</ul>
+<ol>
+<li>babel-loader：</li>
+</ol>
+<pre><code class="language-js">{<span class="hljs-comment">// 转换js代码，es6+=&gt;es5</span>
+    <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,
+    <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/node_modules/</span>,
+    <span class="hljs-attr">use</span>: <span class="hljs-string">&#x27;babel-loader&#x27;</span>
+},
+</code></pre>
+<ol start="2">
+<li>babel.config.js（配置可以提取出来：.babelrc、.babelrc.js、babel.config.js、package.json 文件）：</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-comment">// .babelrc 只会影响本项目中的代码；babel.config.js 会影响整个项目中的代码，包含node_modules中的代码</span>
+<span class="hljs-comment">// 推荐使用：babel.config.js</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = {
+  <span class="hljs-attr">presets</span>: [
+    <span class="hljs-string">&#x27;@babel/preset-env&#x27;</span>
+  ]
+}
+</code></pre>
+<ol start="3">
+<li>babel 常用相关插件说明：</li>
+</ol>
+<pre><code>&gt; babel-loader           =&gt; webpack中转换babel的工具，相当于一个平台不做具体的工作
+&gt; @babel/core            =&gt; babel转换语言的核心功能，核心api等
+&gt; @babel/preset-env      =&gt; babel转换语言的内容包，包括es6+所有特性
+
+// 以下内容待确认！
+&gt; @babel/cli             =&gt; 使node环境支持es6语法；@babel/core也能是node环境支持es6语法；
+&gt; @babel/polyfill        =&gt;（一些全局方法和变量）Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。举例来说，ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。babel-polyfill相对来说比较大。
+
+&gt; @babel/runtime  =&gt; 如果不想用babel-polyfill污染全局环境，就是用babel-runtime+babel-plugin-transform-runtime；
+&gt; @babel/plugin-transform-runtime  =&gt; babel-plugin-transform-runtime依赖于babel-runtime
+
+&gt; @babel/eslint-parser    =&gt; babel + eslint 的解析器（好像也没有使用？）
+
+&gt; 插件名互换：@babel/core === 等同于 babel-core
+</code></pre>
+<h4>loader：文件/图片处理</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install file-loader --save-dev
+&gt; npm install url-loader --save-dev
+</code></pre>
+<ul>
+<li>功能：</li>
+</ul>
+<ol>
+<li>file-loader 普通处理</li>
+</ol>
+<pre><code class="language-js">{<span class="hljs-comment">// 将图片文件复制到另一个目录</span>
+    <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(png|svg|jpg|gif)$/</span>,
+    <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;file-loader&#x27;</span>,
+    <span class="hljs-attr">options</span>: {
+        <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;[name]-[contenthash:8].[ext]&#x27;</span>,
+        <span class="hljs-attr">outputPath</span>: <span class="hljs-string">&#x27;images&#x27;</span>,
+        <span class="hljs-attr">esModule</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 新版loader需要配置，否则会产生错误：img src=[object Module]</span>
+    },
+},
+</code></pre>
+<ol start="2">
+<li>url-loader 和 file-loader 二选一
+url-loader 对 file-loader 有依赖，需要提前安装；
+url-loader 将图片编码为 Base64 文件：对于小文件座大小限制进行处理，减少请求次数。</li>
+</ol>
+<pre><code class="language-js">{<span class="hljs-comment">// 将小于10kb的图片编码成base64</span>
+    <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.(png|svg|jpg|gif)$/</span>,
+    <span class="hljs-attr">use</span>: {
+        <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;url-loader&#x27;</span>,  <span class="hljs-comment">// url-loader对file-loader有依赖，需要提前安装</span>
+        <span class="hljs-attr">options</span>: {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;[name]-[contenthash:8].[ext]&#x27;</span>,
+            <span class="hljs-attr">outputPath</span>: <span class="hljs-string">&#x27;images&#x27;</span>,
+            <span class="hljs-attr">limit</span>: <span class="hljs-number">10</span> * <span class="hljs-number">1024</span>,  <span class="hljs-comment">// 10 KB 对文件大小进行限制，超过就不转换</span>
+            <span class="hljs-attr">esModule</span>: <span class="hljs-literal">false</span>    <span class="hljs-comment">// 新版loader需要配置，否则会产生错误：img src=[object Module]</span>
+        },
+    }
+}
+</code></pre>
+<h4>loader：html处理（用得少，使用其他插件替代）</h4>
+<p>依赖：</p>
+<pre><code>&gt; npm install html-loader --save-dev
+</code></pre>
+<h2>3.6 plugins插件处理其他任务</h2>
+<h4>plugin：自动生成html文件插件</h4>
+<ul>
+<li>依赖：html-webpack-plugin</li>
+<li>功能：</li>
+</ul>
+<ol>
+<li>基础配置</li>
+</ol>
+<pre><code>// 用于生成 index.html
+new HtmlWebpackPlugin({
+    title: 'index首页',
+    meta: {
+        viewport: 'width=device-width'
+    },
+    minify: {
+        removeAttributeQuotes: true     // 移除属性的引号
+    },
+    inject: true,                       // script是否至于body底部
+    template: './src/templates/index.html',
+    filename: 'index.html',
+    // cache: false,
+    chunks: ['index'],                  // 指定加载js文件，默认全部加载
+    // showErrors: true,                // 如果 webpack 编译出现错误，webpack会将错误信息包裹在一个 pre 标签内，属性的默认值为 true ，也就是显示错误信息。
+}),
+</code></pre>
+<ol start="2">
+<li>在html模板中使用变量：</li>
+</ol>
+<pre><code class="language-html">  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Home - &lt;%= htmlWebpackPlugin.options.title %&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+</code></pre>
+<h4>plugin：根据目录自动生成html文件</h4>
+<ul>
+<li>依赖：auto-web-plugin</li>
+</ul>
+<h4>plugin：自动清除输出目录插件</h4>
+<ul>
+<li>依赖：clean-webpack-plugin</li>
+</ul>
+<h4>plugin：拷贝文件的插件</h4>
+<ul>
+<li>依赖：copy-webpack-plugin</li>
+</ul>
+<pre><code>const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+module.exports = merge(common, {
+    mode: 'production',
+    plugins: [
+      new CleanWebpackPlugin(),
+      new CopyWebpackPlugin({
+        patterns: [
+            { from: &quot;./public/*.ico&quot;, to: &quot;./&quot;},
+        ],
+      })
+    ]
+})
+</code></pre>
+<h1>4. 增强体验</h1>
+<h2>4.1、热更新</h2>
+<h4>方案1：webpack + browser-sync（本地磁盘可见文件）</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install browser-sync --save-dev
+</code></pre>
+<ul>
+<li>功能：</li>
+</ul>
+<ol>
+<li>自动编译，监控源文件；使用webpack自带配置</li>
+</ol>
+<pre><code>// 1、npm scripts中 =&gt; webpack携带命令行参数或者添加配置项
+&gt; webpack --watch
+
+// 2、webpack.config.js =&gt; webpack配置项
+watch: true, // 监听所有文件的更改，自动构建自动刷新浏览器
+</code></pre>
+<ol start="2">
+<li>自动刷新浏览器，监控打包文件；使用工具browser-sync</li>
+</ol>
+<pre><code>&gt; npm install browser-sync --save-dev
+</code></pre>
+<pre><code>  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack --config webpack.dev.js&quot;,   // 配置项配了watch就可以不带参数--wacth
+    &quot;sync&quot;: &quot;browser-sync dist --files '**/*'&quot;, // 带参数--files
+  }
+</code></pre>
+<ol start="3">
+<li>需要同时启用两个命令行：</li>
+</ol>
+<pre><code>webpack-sample&gt; npm run dev
+webpack-sample&gt; npm run sync
+</code></pre>
+<h4>方案2：webapck-dev-server工具（内存中看不到文件）</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install webapck-dev-server --save-dev
+</code></pre>
+<ul>
+<li>
+<p>功能：集成了自动编译和自动刷新浏览器，注意watch和target的配置</p>
+</li>
+<li>
+<p>基本配置 :</p>
+</li>
+</ul>
+<pre><code>1. contentBase  =&gt; 基本路径 
+2. open         =&gt; 自动打开浏览器
+3. host         =&gt; 虚拟主机地址
+4. port         =&gt; 端口号
+5. proxy（代理） =&gt; 代理配置
+</code></pre>
+<ul>
+<li>完整示例：</li>
+</ul>
+<pre><code class="language-js">    <span class="hljs-comment">// watch: true,             // 热更新方案1：监听源码文件更改自动构建，监听磁盘文件自动刷新浏览器（配合browser-sync刷新浏览器）</span>
+    <span class="hljs-attr">target</span>: <span class="hljs-string">&quot;web&quot;</span>,              <span class="hljs-comment">// webpack5的一个bug，需要打开才能自动刷新浏览器，参考：https://blog.csdn.net/xiaolongbaobushibao/article/details/116664883</span>
+                                <span class="hljs-comment">// 使用devServer是不用打开watch</span>
+                                <span class="hljs-comment">// 使用devServer常见不刷新浏览器情况：</span>
+    <span class="hljs-attr">devServer</span>: {                <span class="hljs-comment">// 热更新方案2：本地开发服务器，监听源码文件自动构建和刷新浏览器，打包结果存在内存而不是磁盘中</span>
+        <span class="hljs-attr">host</span>: <span class="hljs-string">&#x27;127.0.0.1&#x27;</span>,  
+        <span class="hljs-attr">port</span>: <span class="hljs-string">&#x27;8080&#x27;</span>,
+        <span class="hljs-comment">// hot: true,           // 模块热替换，如果热替换失败就自动回到页面自动刷新</span>
+        <span class="hljs-comment">// hotOnly: true,       // 模块热替换，如果热替换失败不会自动刷新页面</span>
+        <span class="hljs-attr">contentBase</span>: path.<span class="hljs-title function_">resolve</span>(__dirname,<span class="hljs-string">&#x27;dist&#x27;</span>),<span class="hljs-comment">// 指定静态资源路径的根目录，需要对应output:path为dist，</span>
+        <span class="hljs-attr">open</span>: <span class="hljs-literal">true</span>,             <span class="hljs-comment">// 自动打开浏览器</span>
+        <span class="hljs-comment">// watchContentBase: true,</span>
+        <span class="hljs-attr">inline</span>: <span class="hljs-literal">true</span>
+        <span class="hljs-comment">// proxy: {             // 配置代理，防止跨域问题</span>
+        <span class="hljs-comment">//     &#x27;/api&#x27;: {</span>
+        <span class="hljs-comment">//         target: &#x27;https://api.github.com&#x27;, // http://localhost:8080/api/users -&gt; https://api.github.com/api/users</span>
+        <span class="hljs-comment">//         pathRewrite: {                    // http://localhost:8080/api/users -&gt; https://api.github.com/users</span>
+        <span class="hljs-comment">//             &#x27;^/api&#x27;: &#x27;&#x27;</span>
+        <span class="hljs-comment">//         },</span>
+        <span class="hljs-comment">//         // 不能使用 localhost:8080 作为请求 GitHub 的主机名</span>
+        <span class="hljs-comment">//         changeOrigin: true</span>
+        <span class="hljs-comment">//     }</span>
+        <span class="hljs-comment">// }</span>
+    },
+</code></pre>
+<ul>
+<li><strong>webpack dev server不能只能刷新浏览器的问题</strong></li>
+</ul>
+<ol>
+<li>webpack5的一个bug，参考：<a href="https://blog.csdn.net/xiaolongbaobushibao/article/details/116664883">https://blog.csdn.net/xiaolongbaobushibao/article/details/116664883</a></li>
+</ol>
+<pre><code>// webpack.config.js中添加配置项
+target: &quot;web&quot;,
+</code></pre>
+<ol start="2">
+<li>提取了公用代码，一些配置路径错误等问题；例如：检查optimization、path、publicPath、contentBase等配置项</li>
+</ol>
+<h4>热更新最佳实践（个人认为）：</h4>
+<ul>
+<li><strong>本地开发最初调试阶段</strong> （dev）=&gt; 使用 webpack-dev-server，只有浏览器内存能看到代码</li>
+<li><strong>本地测试或者联调阶段</strong> （dev/pre）=&gt; 使用 webpack + browser-sync，能看到本地代码</li>
+</ul>
+<blockquote>
+<p>因为开发阶段很多文件没有合并压缩，跟生产环境差异太大。用webpack-dev-server有些东西测不出来。</p>
+</blockquote>
+<ul>
+<li><strong>预上线、生产上线阶段</strong> （sit、prd） =&gt; 使用文件合并、压缩过后的完整代码</li>
+</ul>
+<h2>4.2、模块热加载</h2>
+<h4>webapck-dev-server中 HMR 模块的热更新：</h4>
+<p><strong>注意事项：</strong></p>
+<ol>
+<li>HMR需要新增一些代码，用来手动处理JS模块的热替换、图片模块热替换等（因为不同的业务场景需要处理的数据不同）。</li>
+<li>HMR新增代码与业务无关，所以会增加一定工作量；而且写起来比较麻烦，建议结合框架使用完善的HMR方案。</li>
+<li>HMR新增代码与业务无关，但是在webpack打包过后其实是删除了的，对生产环境没有影响。</li>
+</ol>
+<p><strong>使用场景：</strong></p>
+<ol>
+<li>在页面中有一个编辑器，在编辑器中输入内容然后再修改样式。webapck-dev-server负责刷新整体页面，如果每次修改了样式后页面刷新，编辑器中的内容就会丢失。HMR插件能实现在页面不刷新的情况下，局部模块的更新。<br></li>
+<li>在开发过程中频繁修改页面某个模块的样式，例如：背景图片。</li>
+</ol>
+<p><strong>如何使用：</strong></p>
+<ol>
+<li>命令行参数： webpack-dev-server --hot</li>
+<li>配置文件：</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-comment">// 1、引入webpack</span>
+<span class="hljs-keyword">const</span> webpack = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;webpack&#x27;</span>)
+
+
+<span class="hljs-comment">// 2、plugins里面添加内置插件：</span>
+<span class="hljs-attr">plugins</span>: [
+    <span class="hljs-keyword">new</span> webpack.<span class="hljs-title class_">HotModuleReplacementPlugin</span>()
+    ...
+],
+
+<span class="hljs-comment">// 3、devServer中添加配置项：</span>
+<span class="hljs-comment">// 注意：在热替换手动处理js热替换，如果报错热替换会启动失败；</span>
+<span class="hljs-comment">// 注意：使用hotOly，热替换失败也不会自动刷新页面。</span>
+<span class="hljs-attr">devServer</span>: {
+    <span class="hljs-comment">// 可能出现的错误1：处理的热替换模块有错误，使用hotOnly配置</span>
+    <span class="hljs-comment">// hot: true,  // 模块热替换，如果热替换失败就自动回到页面自动刷新</span>
+    <span class="hljs-attr">hotOnly</span>: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 模块热替换，如果热替换失败不会自动刷新页面便于定位问题</span>
+    ...
+}
+
+</code></pre>
+<p><strong>处理JS模块的热替换</strong></p>
+<ol>
+<li>
+<p>webpack中的热替换api：module.hot.accept 用于注册模块处理函数</p>
+</li>
+<li>
+<p>示例场景：修改编辑器模块代码后，热更新编辑器模块</p>
+</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-comment">// 可能出现的错误2：plugins没有开启配置会报错，需要在热替换代码中对module.hot进行判断</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-variable language_">module</span>.<span class="hljs-property">hot</span>) {
+  <span class="hljs-keyword">let</span> lastEditor = editor
+
+  <span class="hljs-comment">// 1、编辑器的热替换</span>
+  <span class="hljs-comment">// 参数1：模块</span>
+  <span class="hljs-comment">// 参数2：处理函数 =&gt; 实现的功能：简单来说就是用js代码更新一下模块内需要更新的内容（重要），例如下面更新了编辑器。</span>
+  <span class="hljs-variable language_">module</span>.<span class="hljs-property">hot</span>.<span class="hljs-title function_">accept</span>(<span class="hljs-string">&#x27;./editor&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+
+    <span class="hljs-comment">//移除原来编辑器，记录数据</span>
+    <span class="hljs-keyword">const</span> value = lastEditor.<span class="hljs-property">innerHTML</span>
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(lastEditor) 
+
+    <span class="hljs-comment">//更新原来的数据到新的编辑器</span>
+    <span class="hljs-keyword">const</span> newEditor = <span class="hljs-title function_">createEditor</span>()
+    newEditor.<span class="hljs-property">innerHTML</span> = value
+    <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(newEditor)
+    lastEditor = newEditor
+  })
+
+  <span class="hljs-comment">// 2、图片的热替换</span>
+  <span class="hljs-variable language_">module</span>.<span class="hljs-property">hot</span>.<span class="hljs-title function_">accept</span>(<span class="hljs-string">&#x27;./better.png&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    img.<span class="hljs-property">src</span> = background
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(background)
+  })
+}
+</code></pre>
+<ol start="3">
+<li>可能出现的错误：</li>
+</ol>
+<ul>
+<li>
+<p>可能出现的错误1：处理的热替换模块有错误，使用hotOnly配置</p>
+</li>
+<li>
+<p>可能出现的错误2：plugins没有开启配置会报错，需要在热替换代码中对module.hot进行判断</p>
+<p><strong>处理图片模块的热替换</strong></p>
+</li>
+</ul>
+<pre><code class="language-js">  <span class="hljs-comment">// 2、图片的热替换</span>
+  <span class="hljs-variable language_">module</span>.<span class="hljs-property">hot</span>.<span class="hljs-title function_">accept</span>(<span class="hljs-string">&#x27;./better.png&#x27;</span>, <span class="hljs-function">() =&gt;</span> {
+    img.<span class="hljs-property">src</span> = background
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(background)
+  })
+</code></pre>
+<p><strong>VUE + HMR 方案</strong></p>
+<p>参考：<a href="">自己网上找</a></p>
+<p><strong>REACT + HMR 方案</strong></p>
+<p>参考：<a href="">自己网上找</a></p>
+<h2>4.3、配置Source Map （便于查看调试代码）</h2>
+<p>记录代码转换前后的映射关系</p>
+<h4>Source Map配置方案</h4>
+<p><strong>webpack中的devTool，按照以下3中规则配置：</strong></p>
+<ol>
+<li>eval                  =&gt; 使用eval执行模块代码，没有生成对应的.map文件；只能看到错误对应的文件名称；</li>
+<li>source-map            =&gt; 包含错误的行列信息</li>
+<li>cheap                 =&gt; 不包含错误的列信息</li>
+<li>module                =&gt; 不要loader处理源码</li>
+<li>inline                =&gt; 将.map文件以data-url的形式生成放到url中，很占体积</li>
+</ol>
+<p><strong>带eval不生成.map文件：</strong></p>
+<ul>
+<li>eval：构建速度最快，只能定位错误文件是哪个；</li>
+<li>eval-source-map：错误文件名称 + 错误的行列；</li>
+<li>cheap-eval-source-map：错误文件名称 + 错误的行；</li>
+<li>cheap-module-eval-source-map：错误文件名称 + 错误的行 + 代码未被loader处理；</li>
+</ul>
+<p><strong>不带eval都生成了.map文件：</strong></p>
+<ul>
+<li>source-map：错误文件名称 + 错误的行列；</li>
+<li>cheap-source-map：错误文件名称 + 错误的行 + 代码未被loader处理；</li>
+<li>hidden-source-map：代码中看不见source-map源码（适合开发第三方工具，需要的时候再使用）；</li>
+<li>nosources-source-map：看不到源码，只能看到错误行列号（生产环境可以保护源码）；</li>
+</ul>
+<p><strong>带inline不生成.map文件，将其放到url中（不推荐使用inline）：</strong></p>
+<ul>
+<li>inline-source-map：将source-map以data-url方式嵌入到url中，导致代码体积变大；</li>
+</ul>
+<p><strong>最佳实践：</strong></p>
+<ul>
+<li>开发模式：eval-cheap-module-source-map//webpack5中这几个单词顺序不能变，前提是：</li>
+</ul>
+<blockquote>
+<p>1、代码每行不超过80字符
+2、Loader转换过后代码差异大，所以需要看源码
+3、这种模式启动慢，但是重新打包速度快
+<strong>4、注意：webpack5中对这几个单词顺序有要求，必须是：</strong></p>
+<ul>
+<li>^(inline-|hidden-|eval-)?(nosources-)?(cheap-(module-)?)?source-map$</li>
+<li>eval-cheap-module-source-map =&gt; ok</li>
+<li>cheap-module-eval-source-map =&gt; old这种就会报错</li>
+</ul>
+</blockquote>
+<ul>
+<li>生产模式：none、nosources-source-map</li>
+</ul>
+<blockquote>
+<p>1、这样可以避免暴露源码</p>
+</blockquote>
+<h2>4.4、配置路径别名</h2>
+<pre><code class="language-js"><span class="hljs-attr">alias</span>: {
+    <span class="hljs-string">&#x27;@&#x27;</span>: <span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;src&#x27;</span>),
+    <span class="hljs-string">&#x27;@config&#x27;</span>: <span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;config&#x27;</span>)
+}
+</code></pre>
+<h2>4.5、配置涉及到的路径：publicPath （未完待续，待整理）</h2>
+<ul>
+<li>__dirname</li>
+<li>process.cwd()</li>
+<li>path.join(__dirname, ‘dist’)</li>
+<li>path.resolve(__dirname, ‘dist’)</li>
+<li>‘./dist’</li>
+<li>‘/dist/’</li>
+</ul>
+<pre><code class="language-js"><span class="hljs-comment">// ...</span>
+</code></pre>
+<h1>5. 生产环境配置</h1>
+<h2>5.1 根据环境添加不同的配置</h2>
+<h4>方案1：根据命令行参数判断</h4>
+<p><strong>如何判断环境：</strong> 命令行–env production参数会传递给env；</p>
+<pre><code>&gt; webpack --env production
+</code></pre>
+<p><strong>接收参数：</strong></p>
+<p>webpack 除了可以直接导出配置；还可以导出一个function，返回配置：</p>
+<pre><code class="language-js"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = config
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-function">(<span class="hljs-params">env, args</span>)=&gt;</span> config
+</code></pre>
+<ol>
+<li>命令行webpack --env production参数会传递给function的参数env；</li>
+<li>可以在function中对env环境进行判断：</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-comment">// webpack提供了一个函数</span>
+<span class="hljs-comment">// 参数1：env</span>
+<span class="hljs-comment">// 参数2：args</span>
+<span class="hljs-comment">// 返回值：配置项</span>
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-function">(<span class="hljs-params">env, args</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> config = {
+        <span class="hljs-comment">//...</span>
+    }
+
+    <span class="hljs-comment">// env 接受参数：webpack --env production</span>
+    <span class="hljs-keyword">if</span> (env === <span class="hljs-string">&#x27;production&#x27;</span>) {
+        config.<span class="hljs-property">mode</span> = <span class="hljs-string">&#x27;production&#x27;</span>
+        config.<span class="hljs-property">devtool</span> = <span class="hljs-literal">false</span>
+        config.<span class="hljs-property">plugins</span> = [
+          ...config.<span class="hljs-property">plugins</span>,
+          <span class="hljs-keyword">new</span> <span class="hljs-title class_">CleanWebpackPlugin</span>(),
+          <span class="hljs-keyword">new</span> <span class="hljs-title class_">CopyWebpackPlugin</span>([<span class="hljs-string">&#x27;public&#x27;</span>])
+        ]
+    }
+    
+    <span class="hljs-keyword">return</span> config
+}
+</code></pre>
+<h4>方案2：提取公用配置到文件，将配置独立到三个文件：=&gt; 最好用</h4>
+<ul>
+<li>依赖：webpack-merge插件</li>
+</ul>
+<pre><code>&gt; npm install webpack-merge --save-dev  =&gt; 专业用于合并webpack配置项对象的插件
+</code></pre>
+<ul>
+<li>功能：将配置独立到三个文件，prod、dev合并公用配置</li>
+</ul>
+<pre><code>&gt; webpack.common.js // 公用配置 
+&gt; webpack.prod.js   // 生产环境
+&gt; webpack.dev.js    // 开发环境
+</code></pre>
+<ul>
+<li>例如单独配置prd环境的js，合并webpack.common.js中的配置</li>
+</ul>
+<pre><code class="language-js"><span class="hljs-comment">// 合并配置，比较专业的模块：webpack-merge</span>
+<span class="hljs-comment">// 合并配置，最好不要用Object.assign，它在复制对象时后面的配置会完全覆盖掉前面的配置</span>
+<span class="hljs-keyword">const</span> { merge } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;webpack-merge&#x27;</span>)
+
+<span class="hljs-keyword">const</span> common = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;./webpack.common.js&#x27;</span>)
+<span class="hljs-keyword">const</span> { <span class="hljs-title class_">CleanWebpackPlugin</span> } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;clean-webpack-plugin&#x27;</span>)
+<span class="hljs-keyword">const</span> <span class="hljs-title class_">CopyWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;copy-webpack-plugin&#x27;</span>)
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = <span class="hljs-title function_">merge</span>(common, {
+    <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;production&#x27;</span>,
+    <span class="hljs-attr">plugins</span>: [
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">CleanWebpackPlugin</span>(),
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">CopyWebpackPlugin</span>([<span class="hljs-string">&#x27;public&#x27;</span>])
+    ]
+})
+</code></pre>
+<h4>方案3：plugin：DefinePlugin，向打包文件中注入环境变量在webpack打包时判断</h4>
+<ul>
+<li>依赖：无，webpack内置插件：webpack.DefinePlugin</li>
+<li>功能：DefinePlugin插件可以向webpack打包文件中注入js代码直接使用，例如：</li>
+</ul>
+<pre><code class="language-js"><span class="hljs-attr">plugins</span>: [
+    <span class="hljs-keyword">new</span> webpack.<span class="hljs-title class_">DefinePlugin</span>({
+      <span class="hljs-comment">// 值要求的是一个代码片段</span>
+      <span class="hljs-attr">TEST_URL</span>: <span class="hljs-string">&#x27;https://api.example.com&#x27;</span>，
+      <span class="hljs-attr">API_BASE_URL</span>: <span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-string">&#x27;https://api.example.com&#x27;</span>)
+    })
+  ]
+</code></pre>
+<p>在源码中使用变量，打包到 bundle.js ==&gt;</p>
+<pre><code class="language-js"><span class="hljs-comment">// console.log(TEST_URL)，注意没有引号，不是字符串</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-attr">https</span>:<span class="hljs-comment">//api.example.com)</span>
+
+<span class="hljs-comment">// console.log(API_BASE_URL)，所以需要JSON.stringify()</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;https://api.example.com&#x27;</span>)
+</code></pre>
+<ul>
+<li><strong>DefinePlugin 配合 process.end.NODE_ENV 使用</strong></li>
+</ul>
+<ol>
+<li>process.end.NODE_ENV 获取执行环境</li>
+<li>process是在nodejs环境中的全局变量，只能在webpack.config.js中使用；</li>
+<li>想要在源码中使用process判断环境，需要使用插件：DefinePlugin将process变量注入到打包文件。</li>
+<li>以下示例，将环境变量注入到源码boudle.js：process.env.NODE_ENV</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-keyword">new</span> webpack.<span class="hljs-title class_">DefinePlugin</span>({
+    <span class="hljs-attr">PRODUCTION</span>: <span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-literal">true</span>),
+    <span class="hljs-attr">VERSION</span>: <span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-string">&#x27;0.0.1&#x27;</span>),
+    <span class="hljs-attr">API_BASE_URL</span>: <span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-string">&#x27;https://api.example.com&#x27;</span>)
+    <span class="hljs-string">&#x27;process.env&#x27;</span>: {
+         <span class="hljs-attr">NODE_ENV</span>: <span class="hljs-variable constant_">JSON</span>.<span class="hljs-title function_">stringify</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">NODE_ENV</span>)
+     }
+});
+</code></pre>
+<ul>
+<li><strong>process.end.NODE_ENV使用时的兼容性问题</strong> ，在npm scripts中添加：</li>
+</ul>
+<p>windows/linux兼容：</p>
+<pre><code>cross-env NODE_ENV=development
+</code></pre>
+<p>windows：</p>
+<pre><code>SET NODE_ENV=development
+</code></pre>
+<p>os x/linux：</p>
+<pre><code>export NODE_ENV=development
+</code></pre>
+<h1>6. 优化打包性能</h1>
+<h2>6.1 Tree Shaking 功能</h2>
+<h4>基本使用</h4>
+<p>将未使用的代码处理掉，合并模块等功能；没有依赖项。</p>
+<ul>
+<li>生产环境下自动启用</li>
+<li>其他环境下开启配置</li>
+</ul>
+<pre><code>module.exports = {
+  mode: 'none',
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js'
+  },
+  optimization: {
+    // 模块只导出被使用的成员
+    usedExports: true,
+    
+    // 压缩输出结果，usedExports开启后会移除未被使用的成员
+    // minimize: true,
+
+    // 尽可能合并每一个模块到一个函数中（Scop Hosting）
+    concatenateModules: true,
+  }
+}
+</code></pre>
+<h4>Tree Shaking和Babel（未完待续）</h4>
+<p>据说是用babel时，tree shaking会失效？</p>
+<ul>
+<li>tree shaking前提是 ESM Modules，由webpack打包的代码必须是用EMS</li>
+<li>babel preset-env这个插件就是将es6+转换为es5，而且它是将ESM =&gt; 转换为CommonJS的方式，导致tree shaking失效（Babel到底是将什么ESM转换为CommonJS，待梳理~~~~~~~~~~~）</li>
+<li>最新版本的Babel自动关闭了 ESM 转换插件，ESM并没有转换；所以tree shaking可以正常工作。</li>
+</ul>
+<pre><code class="language-js">    <span class="hljs-attr">rules</span>: [
+      {
+        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.js$/</span>,
+        <span class="hljs-attr">use</span>: {
+          <span class="hljs-attr">loader</span>: <span class="hljs-string">&#x27;babel-loader&#x27;</span>,
+          <span class="hljs-attr">options</span>: {
+            <span class="hljs-attr">presets</span>: [
+              <span class="hljs-comment">// 如果 Babel 加载模块时已经转换了 ESM，则会导致 Tree Shaking 失效；最新版本的Babel自动关闭了 ESM 转换插件</span>
+              <span class="hljs-comment">// [&#x27;@babel/preset-env&#x27;, { modules: &#x27;commonjs&#x27; }] // 强制将ESM转换为CommonJS，tree shaking失效</span>
+              <span class="hljs-comment">// [&#x27;@babel/preset-env&#x27;, { modules: false }] // 强制关闭转换插件</span>
+              <span class="hljs-comment">// 也可以使用默认配置，也就是 auto，这样 babel-loader 会自动关闭 ESM 转换</span>
+              [<span class="hljs-string">&#x27;@babel/preset-env&#x27;</span>, { <span class="hljs-attr">modules</span>: <span class="hljs-string">&#x27;auto&#x27;</span> }]
+            ]
+          }
+        }
+      }
+    ]
+</code></pre>
+<h4>Tree Shaking与sideEffects（未完待续，使用场景待研究）</h4>
+<p><strong>sideEffects使用场景：</strong></p>
+<p>如果有定义了很多模块（例如多个组件），但实际上只使用了一个；打包的时候需要删除多余的代码，可以用sideEffects配置。</p>
+<ul>
+<li>生产环境下自动启用</li>
+<li>开发环境下如下配置</li>
+</ul>
+<p><strong>sideEffects配置</strong></p>
+<p>webpack.config.js 下的配置</p>
+<pre><code class="language-js">  <span class="hljs-comment">// webpack.config.js 下的配置</span>
+  <span class="hljs-attr">optimization</span>: {
+    <span class="hljs-attr">sideEffects</span>: <span class="hljs-literal">true</span>,<span class="hljs-comment">//打开移除未使用的模块</span>
+  }
+</code></pre>
+<p>package.json下的配置：</p>
+<pre><code class="language-js"><span class="hljs-comment">// package.json的配置和webpack下的配置意义不同，此处只是标识代码没有副作用</span>
+<span class="hljs-string">&quot;sideEffects&quot;</span>: <span class="hljs-literal">false</span> <span class="hljs-comment">// 标识代码没有副作用，webpack在打包时会删掉有副作用的代码</span>
+</code></pre>
+<h2>6.2 多入口打包 =&gt; 解决文件过大的问题</h2>
+<h4>方案1：多个html-webpack-plugin</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install html-webpack-plugin --save-dev
+</code></pre>
+<ul>
+<li>功能：
+entry 定义多个入口并使用多个 HtmlWebpackPlugin() 插件；具体参考示例源码；</li>
+</ul>
+<h4>方案2：使用auto-web-plugin插件按照目录生成html</h4>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install auto-web-plugin --save-dev
+</code></pre>
+<ul>
+<li>功能：（未完待续）</li>
+</ul>
+<pre><code class="language-js"><span class="hljs-comment">// ...</span>
+</code></pre>
+<h2>6.3 CodeSplit代码分片，按需加载 =&gt; 解决文件过大的问题</h2>
+<ul>
+<li>依赖：无</li>
+<li>功能：使用动态加载语句：import(‘./components/banner.js’).then(banner =&gt; {})</li>
+<li>实践：通常和路由相结合，不需要其他配置</li>
+</ul>
+<pre><code class="language-js">
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">render</span> = (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">const</span> hash = <span class="hljs-variable language_">window</span>.<span class="hljs-property">location</span>.<span class="hljs-property">hash</span> || <span class="hljs-string">&#x27;#posts&#x27;</span>
+  <span class="hljs-keyword">const</span> mainElement = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.main&#x27;</span>)
+  mainElement.<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&#x27;&#x27;</span>
+
+  <span class="hljs-keyword">if</span> (hash === <span class="hljs-string">&#x27;#posts&#x27;</span>) {
+    <span class="hljs-comment">// mainElement.appendChild(posts())</span>
+    <span class="hljs-comment">// /* webpackChunkName: &#x27;components&#x27; */为魔法注释，可用将两个模块合并到同一个文件名中</span>
+    <span class="hljs-title function_">import</span>(<span class="hljs-comment">/* webpackChunkName: &#x27;components&#x27; */</span><span class="hljs-string">&#x27;./posts/posts&#x27;</span>).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">{ <span class="hljs-keyword">default</span>: posts }</span>) =&gt;</span> {
+      mainElement.<span class="hljs-title function_">appendChild</span>(<span class="hljs-title function_">posts</span>())
+    })
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (hash === <span class="hljs-string">&#x27;#album&#x27;</span>) {
+    <span class="hljs-comment">// mainElement.appendChild(album())</span>
+    <span class="hljs-title function_">import</span>(<span class="hljs-comment">/* webpackChunkName: &#x27;components&#x27; */</span><span class="hljs-string">&#x27;&#x27;</span>./album/album<span class="hljs-string">&#x27;).then(({ default: album }) =&gt; {
+      mainElement.appendChild(album())
+    })
+  }
+}
+
+render()
+
+window.addEventListener(&#x27;</span>hashchange<span class="hljs-string">&#x27;, render)
+</span></code></pre>
+<ul>
+<li>配合VUE-ROUTER示例：（未完待续）</li>
+</ul>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> routes = [
+  {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/&#x27;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Index&#x27;</span>,
+    <span class="hljs-attr">component</span>: <span class="hljs-title class_">Index</span>
+  },
+  {
+    <span class="hljs-attr">path</span>: <span class="hljs-string">&#x27;/detail/:id&#x27;</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Detail&#x27;</span>,
+    <span class="hljs-attr">props</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-comment">// route level code-splitting</span>
+    <span class="hljs-comment">// this generates a separate chunk (about.[hash].js) for this route</span>
+    <span class="hljs-comment">// which is lazy-loaded when the route is visited.</span>
+    <span class="hljs-attr">component</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-title function_">import</span>(<span class="hljs-comment">/* webpackChunkName: &quot;detail&quot; */</span> <span class="hljs-string">&#x27;../views/Detail.vue&#x27;</span>)
+  }
+]
+</code></pre>
+<h2>6.4 splitChunks，提取js公共代码</h2>
+<ul>
+<li>依赖：无，直接在optimization中配置</li>
+<li>功能：取代了webpack4中的CommonsChunkPlugin，默认值是按需加载的 chunks；参考：<a href="https://webpack.docschina.org/plugins/split-chunks-plugin/">https://webpack.docschina.org/plugins/split-chunks-plugin/</a></li>
+</ul>
+<pre><code class="language-js"><span class="hljs-attr">optimization</span>: {
+    <span class="hljs-attr">splitChunks</span>: {
+        <span class="hljs-comment">// 自动提取所有公共模块到单独 bundle；可选配置有：all，async 和 initial。</span>
+        <span class="hljs-comment">// 设置为 all 可能特别强大，因为这意味着 chunk 可以在异步和非异步 chunk 之间共享</span>
+        <span class="hljs-attr">chunks</span>: <span class="hljs-string">&#x27;all&#x27;</span>
+    }
+},
+</code></pre>
+<h2>6.5 MiniCssExtractPlugin，提取CSS到单个文件</h2>
+<ul>
+<li>依赖：</li>
+</ul>
+<pre><code>&gt; npm install mini-css-extract-plugin --save-dev             =&gt; 将样式存放到单独的css文件中，取代style-loader
+&gt; npm install optimize-css-assets-webpack-plugin --save-dev  =&gt; 手动打开css压缩代码
+&gt; npm install terser-webpack-plugin --save-dev               =&gt; 手动打开js压缩代码
+</code></pre>
+<ul>
+<li>功能：</li>
+</ul>
+<ol>
+<li>将css代码存放到单独的css文件中，是否也可以合并css文件？（待研究：<a href="https://webpack.docschina.org/plugins/mini-css-extract-plugin/%EF%BC%89">https://webpack.docschina.org/plugins/mini-css-extract-plugin/）</a></li>
+<li>配合css-loader，不再需要style-loader；</li>
+</ol>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> <span class="hljs-title class_">MiniCssExtractPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;mini-css-extract-plugin&#x27;</span>)
+<span class="hljs-comment">// ...</span>
+
+  <span class="hljs-attr">optimization</span>: {
+    <span class="hljs-attr">minimizer</span>: [<span class="hljs-comment">// 使用了minimizer，webpack认为不再启动自动压缩js代码</span>
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">TerserWebpackPlugin</span>(),            <span class="hljs-comment">//手动打开js压缩代码</span>
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">OptimizeCssAssetsWebpackPlugin</span>()  <span class="hljs-comment">//手动打开css压缩代码</span>
+    ]
+  },
+  <span class="hljs-attr">module</span>: {
+    <span class="hljs-attr">rules</span>: [
+      {
+        <span class="hljs-attr">test</span>: <span class="hljs-regexp">/\.css$/</span>,
+        <span class="hljs-attr">use</span>: [
+          <span class="hljs-comment">// &#x27;style-loader&#x27;, // 将样式通过 style 标签注入</span>
+          <span class="hljs-title class_">MiniCssExtractPlugin</span>.<span class="hljs-property">loader</span>, <span class="hljs-comment">// 将样式存放到单独的css文件中</span>
+          <span class="hljs-string">&#x27;css-loader&#x27;</span>
+        ]
+      }
+    ]
+  },
+  <span class="hljs-attr">plugins</span>: [
+    ...，
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">MiniCssExtractPlugin</span>()
+  ]
+</code></pre>
+<h2>6.6 ExtractTextPlugin、MiniCssExtractPlugin哪个更好用？</h2>
+<ol>
+<li>MiniCssExtractPlugin基于 webpack v4 的新特性（模块类型）构建，并且需要 webpack 4 才能正常工作。</li>
+<li>与 extract-text-webpack-plugin 相比，MiniCssExtractPlugin：</li>
+</ol>
+<blockquote>
+<p><a href="https://webpack.docschina.org/plugins/mini-css-extract-plugin/">https://webpack.docschina.org/plugins/mini-css-extract-plugin/</a></p>
+</blockquote>
+<ul>
+<li>异步加载</li>
+<li>没有重复的编译（性能）</li>
+<li>更容易使用</li>
+<li>特别针对 CSS 开发</li>
+</ul>
+<h2>6.7 文件名hash，解决缓存带来的问题</h2>
+<p><strong>webpack中有三种hash：</strong></p>
+<ol>
+<li>项目级别：filename: ‘[name]-[hash].bundle.js’ —— 项目中任何改动都会修改hash</li>
+<li>Chunk级别：filename: ‘[name]-[chunkhash].bundle.js’ —— 同一路chunk改动会修改hash</li>
+<li>内容级别：filename: ‘[name]-[contenthash].bundle.js’ —— 文件发生变化时才会改变hash</li>
+</ol>
+<p><strong>最佳方案：</strong> 使用contenthash:8，并且后面可以指定位数：8位。</p>
+<pre><code class="language-js">  <span class="hljs-attr">output</span>: {
+    <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;[name]-[contenthash:8].bundle.js&#x27;</span>
+  },
+  ...
+  <span class="hljs-attr">plugins</span>: [
+    ...,
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">MiniCssExtractPlugin</span>({
+      <span class="hljs-attr">filename</span>: <span class="hljs-string">&#x27;[name]-[contenthash:8].bundle.css&#x27;</span>
+    })
+  ]
+
+</code></pre>
+<h2>6.8 Happypack：多线程并行打包</h2>
+<p>webpack4 之后推荐使用 thread-loader；而且 happypack 已经没怎么维护了，和 vue-loader 配合也会有一些配置问题；</p>
+<h2>6.9 其它提高构建性能的方案</h2>
+<p>官方建议：<a href="https://webpack.docschina.org/guides/build-performance/">https://webpack.docschina.org/guides/build-performance/</a></p>
+<p><strong>如何对webpack构建性能进行分析：</strong></p>
+<p>参考文档：<a href="https://juejin.cn/post/6911519627772329991">https://juejin.cn/post/6911519627772329991</a></p>
+<pre><code>&gt; npm install --save-dev speed-measure-webpack-plugin  =&gt; 分析 webpack 打包速度
+&gt; npm install --save-dev webpack-bundle-analyzer       =&gt; 分析 webpack 打包模块大小
+</code></pre>
+<p><strong>提升构建速度方案（主要的几个）：</strong></p>
+<ol>
+<li>通过使用 include 字段减小打包范围</li>
+<li>使用 DllPlugin 为更改不频繁的代码生成单独的打包文件；配置参考：<a href="https://webpack.docschina.org/plugins/dll-plugin/">https://webpack.docschina.org/plugins/dll-plugin/</a></li>
+<li>多使用分片按需加载功能，SplitChunksPlugin 配置；</li>
+<li>使用 thread-loader，功能类似于happypack；创建多线程打包，配置参考：<a href="https://webpack.docschina.org/loaders/thread-loader/#root">https://webpack.docschina.org/loaders/thread-loader/#root</a></li>
+</ol>
+<pre><code>1. 请仅在耗时的操作中使用 thread-loader，因为：在 worker 池中运行的 loader 是受到限制的；具体参考文档。
+2. 不要使用太多的 worker，因为 Node.js 的 runtime 和 loader 都有启动开销。最小化 worker 和 main process(主进程) 之间的模块传输。进程间通讯(IPC, inter process communication)是非常消耗资源的。
+</code></pre>
+<ol start="5">
+<li>使用配置项：cache，缓存生成的 webpack 模块和 chunk，来改善构建速度。cache 会在开发 模式被设置成 type: ‘memory’ 而且在 生产 模式 中被禁用。 参考：<a href="https://webpack.docschina.org/configuration/other-options/#cache">https://webpack.docschina.org/configuration/other-options/#cache</a></li>
+<li>开发阶段尽量使用 webpack-dev-server 在内存中构建</li>
+<li>配置 devTool 生成映射文件时选择合适的选项</li>
+<li>// …</li>
+</ol>
+<h1>7. 示例代码</h1>
+<p><a href="https://gitee.com/ymcdhr/e-demo/tree/master/webpack-sample">https://gitee.com/ymcdhr/e-demo/tree/master/webpack-sample</a></p>
+<h1>8. 参考资料：</h1>
+<p><a href="https://webpack.docschina.org/guides/">https://webpack.docschina.org/guides/</a>
+<a href="https://webpack.docschina.org/guides/build-performance/">https://webpack.docschina.org/guides/build-performance/</a></p>
+<p><a href="https://kaiwu.lagou.com/">特别鸣谢：拉勾教育前端高薪训练营</a></p>
+</div></div></div></div></main></section></section></content><footer class="footer"><div class="el-row el-row"><div class="el-col el-col-10"><div>
+          © 2021 Tony Young  
+          <a href="https://github.com/ymcdhr" target="_blank">Profile</a>  
+          <a href="https://segmentfault.com/u/tonyyoung" target="_blank">Blog</a></div></div><div class="el-col el-col-4"><div style="text-align:center;font-size:12px;"><a href="" target="_blank">托泥羊技术有限公司</a>  
+        </div></div><div class="el-col el-col-10"><div style="float:right;"><a href="https://developer.github.com" target="_blank">GitHub-API</a>  
+        <a href="https://cn.vuejs.org/" target="_blank">Vue.js</a>  
+        <a href="http://element.eleme.io/" target="_blank">Element</a></div></div></div></footer><!----></div>
+    <script>window.__INITIAL_STATE__={"data":{"data":{"id":"13","title":"前端工程化6：Webpack5配置示例，看看这些最佳实践","user":{"id":1,"username":"ymcdhr","name":"Tony Young","image":{"url":"\u002Fuploads\u002Flogo_521b3eebb2.jpg"}},"content":"# 1. 为什么使用Webpack（应用场景）\n\n1. 支持新特性语言版本的编译\n2. 针对javascript模块化打包\n3. 针对所有资源，例如样式、图片、字体等进行模块化\n\n对于1、2两点，grunt、gulp等构建工具可以很好的解决，但是无法解决第3点。Webpack能够解决前端整体的模块化能力。\n\n# 2. 具备的能力\n\n- 模块打包器（Module bundler）—— 本身支持js模块化\n- 加载器（loader） —— 利用babel等进行语言特性编译，转换\n- 代码拆分（Code Splitting）—— 文件按需加载\n- 资源模块（Asset Module） —— 支持加载css、字体等资源\n\n\n\n# 3. 基本配置\n## 3.1 安装\n```\nnpm install webpack --save-dev\nnpm install webpack-cli --save-dev\n```\n\n\n## 3.2 入口文件：webpack.config.js\n\n#### 配置：mode\n1. production 生产模式下，Webpack 会自动优化打包结果；（例如：代码的压缩混淆等）\n2. development 开发模式下，Webpack 会自动优化打包速度，添加一些调试过程中的辅助；\n3. none 模式下，Webpack 就是运行最原始的打包，不做任何额外处理；\n\n#### 配置：entry\nentry 可以是相对路径，也可以是绝对路径\n```\n\u002F\u002F entry 可以是多入口\nentry: {\n    index: '.\u002Fsrc\u002Fpages\u002Findex\u002Findex.js',\n    album: '.\u002Fsrc\u002Fpages\u002Falbum\u002Falbum.js',\n    work: '.\u002Fsrc\u002Fpages\u002Fwork\u002Fwork.js'\n},\n```\n#### 配置：output\noutput 必须是绝对路径\n```\nentry: {\n    index: '.\u002Fsrc\u002Fmain.js'\n},\noutput: {\n    filename: '[name]-[contenthash:8].bundle.js',\u002F\u002F contenthash:8最常用，用于避免缓存问题\n    path: path.join(__dirname, 'dist')\n},\n```\n\n#### 配置：cache\n是否打开构建缓存\n\n## 3.3 资源加载逻辑\n\n可以将js作为入口文件，在js中import css等资源\n\n- js驱动整个前端应用\n- 符合资源加载逻辑，js需要这些资源\n- 保证前端项目的开发资源不缺失\n\n![](\u002Fimg\u002FbVcS3il)\n\nwebpack兼容的几种模块化标准：ES Modules、AMD、COmmonJS\n\nwebpack加载模块的几种方式：\n\n- @import，@import(css)文件时\n- css中的background:url()函数\n- html中src属性、a标签的href（需要配置）\n\n```js\n{\n    test: \u002F.html$\u002F,\n    use: {\n        loader: 'html-loader',\n        options: {\n            attrs: ['img:src', 'a:href']\n        }\n    }\n}\n```\n## 3.4 loader\u002Fplugin 对比，自定义实现 loader\u002Fplugin\n- loader：用于资源加载并处理各种语言的转换\u002F编译（例如将es6+\u002Fts转换为js，css加载等）；\n- plugin：用于资源加载以外的其他打包\u002F压缩\u002F文件处理等功能；\n\n参考文章：前端工程化7\n\n## 3.5 loader加载资源文件\n#### loader：大致分为三类\n1. 编译转换\n2. 文件操作\n3. 代码检查\n\n#### loader：css样式编译（注意loader顺序，css-loader第一个执行）\n\n- 依赖：\n\n```\n\u003E npm install css-loader --save-dev\n\u003E npm install style\u002Fcore --save-dev\n```\n- 配置：\n\n```\n  module: {\n    rules: [\n      {\n        test: \u002F.css$\u002F, \u002F\u002F 匹配文件\n        use: [\u002F\u002F use指定使用到的loader\n          'style-loader', \u002F\u002F 将css-loader转换后的结果放到style标签里面\n          'css-loader'    \u002F\u002F 先执行css-loader，而且是从后往前执行，所以需要放到下面 \n        ]\n      }\n    ]\n  }\n```\n\n#### loader：编译ES6+ =\u003E babel\n- 依赖：\n\n```\n\u003E npm install babel-loader --save-dev         =\u003E babel 转换平台\n\u003E npm install @babel\u002Fcore --save-dev          =\u003E babel 核心模块\n\u003E npm install @babel\u002Fpreset-env --save-dev    =\u003E babel 转换语言包，env表示es6+全量包\n```\n- 配置：\n\n1. babel-loader：\n\n```js\n{\u002F\u002F 转换js代码，es6+=\u003Ees5\n    test: \u002F\\.js$\u002F,\n    exclude: \u002Fnode_modules\u002F,\n    use: 'babel-loader'\n},\n```\n\n2. babel.config.js（配置可以提取出来：.babelrc、.babelrc.js、babel.config.js、package.json 文件）：\n\n```js\n\u002F\u002F .babelrc 只会影响本项目中的代码；babel.config.js 会影响整个项目中的代码，包含node_modules中的代码\n\u002F\u002F 推荐使用：babel.config.js\nmodule.exports = {\n  presets: [\n    '@babel\u002Fpreset-env'\n  ]\n}\n```\n\n3. babel 常用相关插件说明：\n\n```\n\u003E babel-loader           =\u003E webpack中转换babel的工具，相当于一个平台不做具体的工作\n\u003E @babel\u002Fcore            =\u003E babel转换语言的核心功能，核心api等\n\u003E @babel\u002Fpreset-env      =\u003E babel转换语言的内容包，包括es6+所有特性\n\n\u002F\u002F 以下内容待确认！\n\u003E @babel\u002Fcli             =\u003E 使node环境支持es6语法；@babel\u002Fcore也能是node环境支持es6语法；\n\u003E @babel\u002Fpolyfill        =\u003E（一些全局方法和变量）Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。举例来说，ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。babel-polyfill相对来说比较大。\n\n\u003E @babel\u002Fruntime  =\u003E 如果不想用babel-polyfill污染全局环境，就是用babel-runtime+babel-plugin-transform-runtime；\n\u003E @babel\u002Fplugin-transform-runtime  =\u003E babel-plugin-transform-runtime依赖于babel-runtime\n\n\u003E @babel\u002Feslint-parser    =\u003E babel + eslint 的解析器（好像也没有使用？）\n\n\u003E 插件名互换：@babel\u002Fcore === 等同于 babel-core\n```\n\n#### loader：文件\u002F图片处理\n- 依赖：\n\n```\n\u003E npm install file-loader --save-dev\n\u003E npm install url-loader --save-dev\n```\n- 功能：\n\n1. file-loader 普通处理\n\n```js\n{\u002F\u002F 将图片文件复制到另一个目录\n    test: \u002F\\.(png|svg|jpg|gif)$\u002F,\n    loader: 'file-loader',\n    options: {\n        name: '[name]-[contenthash:8].[ext]',\n        outputPath: 'images',\n        esModule: false \u002F\u002F 新版loader需要配置，否则会产生错误：img src=[object Module]\n    },\n},\n```\n\n2. url-loader 和 file-loader 二选一\nurl-loader 对 file-loader 有依赖，需要提前安装；\nurl-loader 将图片编码为 Base64 文件：对于小文件座大小限制进行处理，减少请求次数。\n\n```js\n{\u002F\u002F 将小于10kb的图片编码成base64\n    test: \u002F\\.(png|svg|jpg|gif)$\u002F,\n    use: {\n        loader: 'url-loader',  \u002F\u002F url-loader对file-loader有依赖，需要提前安装\n        options: {\n            name: '[name]-[contenthash:8].[ext]',\n            outputPath: 'images',\n            limit: 10 * 1024,  \u002F\u002F 10 KB 对文件大小进行限制，超过就不转换\n            esModule: false    \u002F\u002F 新版loader需要配置，否则会产生错误：img src=[object Module]\n        },\n    }\n}\n```\n#### loader：html处理（用得少，使用其他插件替代）\n\n依赖：\n```\n\u003E npm install html-loader --save-dev\n```\n\n## 3.6 plugins插件处理其他任务\n\n#### plugin：自动生成html文件插件\n- 依赖：html-webpack-plugin\n- 功能：\n\n1. 基础配置\n\n```\n\u002F\u002F 用于生成 index.html\nnew HtmlWebpackPlugin({\n    title: 'index首页',\n    meta: {\n        viewport: 'width=device-width'\n    },\n    minify: {\n        removeAttributeQuotes: true     \u002F\u002F 移除属性的引号\n    },\n    inject: true,                       \u002F\u002F script是否至于body底部\n    template: '.\u002Fsrc\u002Ftemplates\u002Findex.html',\n    filename: 'index.html',\n    \u002F\u002F cache: false,\n    chunks: ['index'],                  \u002F\u002F 指定加载js文件，默认全部加载\n    \u002F\u002F showErrors: true,                \u002F\u002F 如果 webpack 编译出现错误，webpack会将错误信息包裹在一个 pre 标签内，属性的默认值为 true ，也就是显示错误信息。\n}),\n```\n\n2. 在html模板中使用变量：\n\n```html\n  \u003Ctitle\u003EHome - \u003C%= htmlWebpackPlugin.options.title %\u003E\u003C\u002Ftitle\u003E\n```\n\n#### plugin：根据目录自动生成html文件\n- 依赖：auto-web-plugin\n\n#### plugin：自动清除输出目录插件\n- 依赖：clean-webpack-plugin\n\n#### plugin：拷贝文件的插件\n- 依赖：copy-webpack-plugin\n\n```\nconst { CleanWebpackPlugin } = require('clean-webpack-plugin')\nconst CopyWebpackPlugin = require('copy-webpack-plugin')\n\nmodule.exports = merge(common, {\n    mode: 'production',\n    plugins: [\n      new CleanWebpackPlugin(),\n      new CopyWebpackPlugin({\n        patterns: [\n            { from: \".\u002Fpublic\u002F*.ico\", to: \".\u002F\"},\n        ],\n      })\n    ]\n})\n```\n\n\n\n# 4. 增强体验\n## 4.1、热更新\n#### 方案1：webpack + browser-sync（本地磁盘可见文件）\n- 依赖：\n\n```\n\u003E npm install browser-sync --save-dev\n```\n- 功能：\n\n1. 自动编译，监控源文件；使用webpack自带配置\n\n```\n\u002F\u002F 1、npm scripts中 =\u003E webpack携带命令行参数或者添加配置项\n\u003E webpack --watch\n\n\u002F\u002F 2、webpack.config.js =\u003E webpack配置项\nwatch: true, \u002F\u002F 监听所有文件的更改，自动构建自动刷新浏览器\n```\n\n2. 自动刷新浏览器，监控打包文件；使用工具browser-sync\n\n```\n\u003E npm install browser-sync --save-dev\n```\n\n```\n  \"scripts\": {\n    \"dev\": \"webpack --config webpack.dev.js\",   \u002F\u002F 配置项配了watch就可以不带参数--wacth\n    \"sync\": \"browser-sync dist --files '**\u002F*'\", \u002F\u002F 带参数--files\n  }\n```\n\n3. 需要同时启用两个命令行：\n\n```\nwebpack-sample\u003E npm run dev\nwebpack-sample\u003E npm run sync\n```\n\n#### 方案2：webapck-dev-server工具（内存中看不到文件）\n- 依赖：\n\n```\n\u003E npm install webapck-dev-server --save-dev\n```\n- 功能：集成了自动编译和自动刷新浏览器，注意watch和target的配置\n\n- 基本配置 :\n\n```\n1. contentBase  =\u003E 基本路径 \n2. open         =\u003E 自动打开浏览器\n3. host         =\u003E 虚拟主机地址\n4. port         =\u003E 端口号\n5. proxy（代理） =\u003E 代理配置\n```\n- 完整示例：\n\n```js\n    \u002F\u002F watch: true,             \u002F\u002F 热更新方案1：监听源码文件更改自动构建，监听磁盘文件自动刷新浏览器（配合browser-sync刷新浏览器）\n    target: \"web\",              \u002F\u002F webpack5的一个bug，需要打开才能自动刷新浏览器，参考：https:\u002F\u002Fblog.csdn.net\u002Fxiaolongbaobushibao\u002Farticle\u002Fdetails\u002F116664883\n                                \u002F\u002F 使用devServer是不用打开watch\n                                \u002F\u002F 使用devServer常见不刷新浏览器情况：\n    devServer: {                \u002F\u002F 热更新方案2：本地开发服务器，监听源码文件自动构建和刷新浏览器，打包结果存在内存而不是磁盘中\n        host: '127.0.0.1',  \n        port: '8080',\n        \u002F\u002F hot: true,           \u002F\u002F 模块热替换，如果热替换失败就自动回到页面自动刷新\n        \u002F\u002F hotOnly: true,       \u002F\u002F 模块热替换，如果热替换失败不会自动刷新页面\n        contentBase: path.resolve(__dirname,'dist'),\u002F\u002F 指定静态资源路径的根目录，需要对应output:path为dist，\n        open: true,             \u002F\u002F 自动打开浏览器\n        \u002F\u002F watchContentBase: true,\n        inline: true\n        \u002F\u002F proxy: {             \u002F\u002F 配置代理，防止跨域问题\n        \u002F\u002F     '\u002Fapi': {\n        \u002F\u002F         target: 'https:\u002F\u002Fapi.github.com', \u002F\u002F http:\u002F\u002Flocalhost:8080\u002Fapi\u002Fusers -\u003E https:\u002F\u002Fapi.github.com\u002Fapi\u002Fusers\n        \u002F\u002F         pathRewrite: {                    \u002F\u002F http:\u002F\u002Flocalhost:8080\u002Fapi\u002Fusers -\u003E https:\u002F\u002Fapi.github.com\u002Fusers\n        \u002F\u002F             '^\u002Fapi': ''\n        \u002F\u002F         },\n        \u002F\u002F         \u002F\u002F 不能使用 localhost:8080 作为请求 GitHub 的主机名\n        \u002F\u002F         changeOrigin: true\n        \u002F\u002F     }\n        \u002F\u002F }\n    },\n```\n\n- **webpack dev server不能只能刷新浏览器的问题** \n\n1. webpack5的一个bug，参考：https:\u002F\u002Fblog.csdn.net\u002Fxiaolongbaobushibao\u002Farticle\u002Fdetails\u002F116664883\n\n```\n\u002F\u002F webpack.config.js中添加配置项\ntarget: \"web\",\n```\n2. 提取了公用代码，一些配置路径错误等问题；例如：检查optimization、path、publicPath、contentBase等配置项\n\n#### 热更新最佳实践（个人认为）：\n\n-  **本地开发最初调试阶段** （dev）=\u003E 使用 webpack-dev-server，只有浏览器内存能看到代码\n-  **本地测试或者联调阶段** （dev\u002Fpre）=\u003E 使用 webpack + browser-sync，能看到本地代码\n\u003E 因为开发阶段很多文件没有合并压缩，跟生产环境差异太大。用webpack-dev-server有些东西测不出来。\n-  **预上线、生产上线阶段** （sit、prd） =\u003E 使用文件合并、压缩过后的完整代码\n\n\n\n\n\n\n\n## 4.2、模块热加载\n#### webapck-dev-server中 HMR 模块的热更新：\n\n **注意事项：** \n1. HMR需要新增一些代码，用来手动处理JS模块的热替换、图片模块热替换等（因为不同的业务场景需要处理的数据不同）。\n2. HMR新增代码与业务无关，所以会增加一定工作量；而且写起来比较麻烦，建议结合框架使用完善的HMR方案。\n3. HMR新增代码与业务无关，但是在webpack打包过后其实是删除了的，对生产环境没有影响。\n\n\n **使用场景：** \n\n1. 在页面中有一个编辑器，在编辑器中输入内容然后再修改样式。webapck-dev-server负责刷新整体页面，如果每次修改了样式后页面刷新，编辑器中的内容就会丢失。HMR插件能实现在页面不刷新的情况下，局部模块的更新。\u003Cbr\u003E\n2. 在开发过程中频繁修改页面某个模块的样式，例如：背景图片。\n\n\n **如何使用：** \n1. 命令行参数： webpack-dev-server --hot\n2. 配置文件：\n\n```js\n\u002F\u002F 1、引入webpack\nconst webpack = require('webpack')\n\n\n\u002F\u002F 2、plugins里面添加内置插件：\nplugins: [\n    new webpack.HotModuleReplacementPlugin()\n    ...\n],\n\n\u002F\u002F 3、devServer中添加配置项：\n\u002F\u002F 注意：在热替换手动处理js热替换，如果报错热替换会启动失败；\n\u002F\u002F 注意：使用hotOly，热替换失败也不会自动刷新页面。\ndevServer: {\n    \u002F\u002F 可能出现的错误1：处理的热替换模块有错误，使用hotOnly配置\n    \u002F\u002F hot: true,  \u002F\u002F 模块热替换，如果热替换失败就自动回到页面自动刷新\n    hotOnly: true, \u002F\u002F 模块热替换，如果热替换失败不会自动刷新页面便于定位问题\n    ...\n}\n\n```\n\n **处理JS模块的热替换** \n\n1. webpack中的热替换api：module.hot.accept 用于注册模块处理函数\n\n\n2. 示例场景：修改编辑器模块代码后，热更新编辑器模块\n\n```js\n\u002F\u002F 可能出现的错误2：plugins没有开启配置会报错，需要在热替换代码中对module.hot进行判断\nif (module.hot) {\n  let lastEditor = editor\n\n  \u002F\u002F 1、编辑器的热替换\n  \u002F\u002F 参数1：模块\n  \u002F\u002F 参数2：处理函数 =\u003E 实现的功能：简单来说就是用js代码更新一下模块内需要更新的内容（重要），例如下面更新了编辑器。\n  module.hot.accept('.\u002Feditor', () =\u003E {\n\n    \u002F\u002F移除原来编辑器，记录数据\n    const value = lastEditor.innerHTML\n    document.body.removeChild(lastEditor) \n\n    \u002F\u002F更新原来的数据到新的编辑器\n    const newEditor = createEditor()\n    newEditor.innerHTML = value\n    document.body.appendChild(newEditor)\n    lastEditor = newEditor\n  })\n\n  \u002F\u002F 2、图片的热替换\n  module.hot.accept('.\u002Fbetter.png', () =\u003E {\n    img.src = background\n    console.log(background)\n  })\n}\n```\n\n3. 可能出现的错误：\n- 可能出现的错误1：处理的热替换模块有错误，使用hotOnly配置\n- 可能出现的错误2：plugins没有开启配置会报错，需要在热替换代码中对module.hot进行判断\n\n\n  **处理图片模块的热替换** \n```js\n  \u002F\u002F 2、图片的热替换\n  module.hot.accept('.\u002Fbetter.png', () =\u003E {\n    img.src = background\n    console.log(background)\n  })\n```\n\n **VUE + HMR 方案** \n\n参考：[自己网上找]()\n\n **REACT + HMR 方案** \n\n参考：[自己网上找]()\n\n\n\n\n\n\n## 4.3、配置Source Map （便于查看调试代码）\n记录代码转换前后的映射关系\n\n#### Source Map配置方案\n **webpack中的devTool，按照以下3中规则配置：** \n1. eval                  =\u003E 使用eval执行模块代码，没有生成对应的.map文件；只能看到错误对应的文件名称；\n2. source-map            =\u003E 包含错误的行列信息\n3. cheap                 =\u003E 不包含错误的列信息\n4. module                =\u003E 不要loader处理源码\n5. inline                =\u003E 将.map文件以data-url的形式生成放到url中，很占体积\n\n\n **带eval不生成.map文件：** \n- eval：构建速度最快，只能定位错误文件是哪个；\n- eval-source-map：错误文件名称 + 错误的行列；\n- cheap-eval-source-map：错误文件名称 + 错误的行；\n- cheap-module-eval-source-map：错误文件名称 + 错误的行 + 代码未被loader处理；\n\n\n **不带eval都生成了.map文件：** \n- source-map：错误文件名称 + 错误的行列；\n- cheap-source-map：错误文件名称 + 错误的行 + 代码未被loader处理；\n- hidden-source-map：代码中看不见source-map源码（适合开发第三方工具，需要的时候再使用）；\n- nosources-source-map：看不到源码，只能看到错误行列号（生产环境可以保护源码）；\n\n\n **带inline不生成.map文件，将其放到url中（不推荐使用inline）：** \n- inline-source-map：将source-map以data-url方式嵌入到url中，导致代码体积变大；\n\n\n **最佳实践：**\n \n- 开发模式：eval-cheap-module-source-map\u002F\u002Fwebpack5中这几个单词顺序不能变，前提是：\n\u003E 1、代码每行不超过80字符\n\u003E 2、Loader转换过后代码差异大，所以需要看源码\n\u003E 3、这种模式启动慢，但是重新打包速度快\n\u003E **4、注意：webpack5中对这几个单词顺序有要求，必须是：** \n\u003E - ^(inline-|hidden-|eval-)?(nosources-)?(cheap-(module-)?)?source-map$\n\u003E - eval-cheap-module-source-map =\u003E ok\n\u003E - cheap-module-eval-source-map =\u003E old这种就会报错\n\n- 生产模式：none、nosources-source-map\n\u003E 1、这样可以避免暴露源码\n\n\n## 4.4、配置路径别名\n```js\nalias: {\n    '@': resolve('src'),\n    '@config': resolve('config')\n}\n```\n\n\n## 4.5、配置涉及到的路径：publicPath （未完待续，待整理）\n- __dirname\n- process.cwd()\n- path.join(__dirname, 'dist')\n- path.resolve(__dirname, 'dist')\n- '.\u002Fdist'\n- '\u002Fdist\u002F'\n\n```js\n\u002F\u002F ...\n```\n\n\n\n# 5. 生产环境配置\n## 5.1 根据环境添加不同的配置\n\n#### 方案1：根据命令行参数判断\n **如何判断环境：** 命令行--env production参数会传递给env；\n```\n\u003E webpack --env production\n```\n\n **接收参数：** \n\nwebpack 除了可以直接导出配置；还可以导出一个function，返回配置：\n```js\nmodule.exports = config\nmodule.exports = (env, args)=\u003E config\n```\n\n1. 命令行webpack --env production参数会传递给function的参数env；\n2. 可以在function中对env环境进行判断：\n\n```js\n\u002F\u002F webpack提供了一个函数\n\u002F\u002F 参数1：env\n\u002F\u002F 参数2：args\n\u002F\u002F 返回值：配置项\nmodule.exports = (env, args) =\u003E {\n    const config = {\n        \u002F\u002F...\n    }\n\n    \u002F\u002F env 接受参数：webpack --env production\n    if (env === 'production') {\n        config.mode = 'production'\n        config.devtool = false\n        config.plugins = [\n          ...config.plugins,\n          new CleanWebpackPlugin(),\n          new CopyWebpackPlugin(['public'])\n        ]\n    }\n    \n    return config\n}\n```\n\n#### 方案2：提取公用配置到文件，将配置独立到三个文件：=\u003E 最好用\n\n- 依赖：webpack-merge插件\n\n```\n\u003E npm install webpack-merge --save-dev  =\u003E 专业用于合并webpack配置项对象的插件\n```\n\n- 功能：将配置独立到三个文件，prod、dev合并公用配置\n\n```\n\u003E webpack.common.js \u002F\u002F 公用配置 \n\u003E webpack.prod.js   \u002F\u002F 生产环境\n\u003E webpack.dev.js    \u002F\u002F 开发环境\n```\n- 例如单独配置prd环境的js，合并webpack.common.js中的配置\n\n```js\n\u002F\u002F 合并配置，比较专业的模块：webpack-merge\n\u002F\u002F 合并配置，最好不要用Object.assign，它在复制对象时后面的配置会完全覆盖掉前面的配置\nconst { merge } = require('webpack-merge')\n\nconst common = require('.\u002Fwebpack.common.js')\nconst { CleanWebpackPlugin } = require('clean-webpack-plugin')\nconst CopyWebpackPlugin = require('copy-webpack-plugin')\n\nmodule.exports = merge(common, {\n    mode: 'production',\n    plugins: [\n      new CleanWebpackPlugin(),\n      new CopyWebpackPlugin(['public'])\n    ]\n})\n```\n\n\n#### 方案3：plugin：DefinePlugin，向打包文件中注入环境变量在webpack打包时判断\n\n- 依赖：无，webpack内置插件：webpack.DefinePlugin\n- 功能：DefinePlugin插件可以向webpack打包文件中注入js代码直接使用，例如：\n\n```js\nplugins: [\n    new webpack.DefinePlugin({\n      \u002F\u002F 值要求的是一个代码片段\n      TEST_URL: 'https:\u002F\u002Fapi.example.com'，\n      API_BASE_URL: JSON.stringify('https:\u002F\u002Fapi.example.com')\n    })\n  ]\n```\n在源码中使用变量，打包到 bundle.js ==\u003E \n```js\n\u002F\u002F console.log(TEST_URL)，注意没有引号，不是字符串\nconsole.log(https:\u002F\u002Fapi.example.com)\n\n\u002F\u002F console.log(API_BASE_URL)，所以需要JSON.stringify()\nconsole.log('https:\u002F\u002Fapi.example.com')\n```\n\n- **DefinePlugin 配合 process.end.NODE_ENV 使用**\n\n1. process.end.NODE_ENV 获取执行环境\n2. process是在nodejs环境中的全局变量，只能在webpack.config.js中使用；\n3. 想要在源码中使用process判断环境，需要使用插件：DefinePlugin将process变量注入到打包文件。\n4. 以下示例，将环境变量注入到源码boudle.js：process.env.NODE_ENV\n\n```js\nnew webpack.DefinePlugin({\n    PRODUCTION: JSON.stringify(true),\n    VERSION: JSON.stringify('0.0.1'),\n    API_BASE_URL: JSON.stringify('https:\u002F\u002Fapi.example.com')\n    'process.env': {\n         NODE_ENV: JSON.stringify(process.env.NODE_ENV)\n     }\n});\n```\n\n- **process.end.NODE_ENV使用时的兼容性问题** ，在npm scripts中添加：\n\nwindows\u002Flinux兼容：\n```\ncross-env NODE_ENV=development\n```\nwindows：\n```\nSET NODE_ENV=development\n```\nos x\u002Flinux：\n```\nexport NODE_ENV=development\n```\n\n\n\n\n# 6. 优化打包性能\n\n## 6.1 Tree Shaking 功能\n#### 基本使用\n将未使用的代码处理掉，合并模块等功能；没有依赖项。\n\n- 生产环境下自动启用\n- 其他环境下开启配置\n\n```\nmodule.exports = {\n  mode: 'none',\n  entry: '.\u002Fsrc\u002Findex.js',\n  output: {\n    filename: 'bundle.js'\n  },\n  optimization: {\n    \u002F\u002F 模块只导出被使用的成员\n    usedExports: true,\n    \n    \u002F\u002F 压缩输出结果，usedExports开启后会移除未被使用的成员\n    \u002F\u002F minimize: true,\n\n    \u002F\u002F 尽可能合并每一个模块到一个函数中（Scop Hosting）\n    concatenateModules: true,\n  }\n}\n```\n\n\n#### Tree Shaking和Babel（未完待续）\n据说是用babel时，tree shaking会失效？\n- tree shaking前提是 ESM Modules，由webpack打包的代码必须是用EMS\n- babel preset-env这个插件就是将es6+转换为es5，而且它是将ESM =\u003E 转换为CommonJS的方式，导致tree shaking失效（Babel到底是将什么ESM转换为CommonJS，待梳理~~~~~~~~~~~）\n- 最新版本的Babel自动关闭了 ESM 转换插件，ESM并没有转换；所以tree shaking可以正常工作。\n\n```js\n    rules: [\n      {\n        test: \u002F\\.js$\u002F,\n        use: {\n          loader: 'babel-loader',\n          options: {\n            presets: [\n              \u002F\u002F 如果 Babel 加载模块时已经转换了 ESM，则会导致 Tree Shaking 失效；最新版本的Babel自动关闭了 ESM 转换插件\n              \u002F\u002F ['@babel\u002Fpreset-env', { modules: 'commonjs' }] \u002F\u002F 强制将ESM转换为CommonJS，tree shaking失效\n              \u002F\u002F ['@babel\u002Fpreset-env', { modules: false }] \u002F\u002F 强制关闭转换插件\n              \u002F\u002F 也可以使用默认配置，也就是 auto，这样 babel-loader 会自动关闭 ESM 转换\n              ['@babel\u002Fpreset-env', { modules: 'auto' }]\n            ]\n          }\n        }\n      }\n    ]\n```\n\n#### Tree Shaking与sideEffects（未完待续，使用场景待研究）\n **sideEffects使用场景：** \n\n如果有定义了很多模块（例如多个组件），但实际上只使用了一个；打包的时候需要删除多余的代码，可以用sideEffects配置。\n\n- 生产环境下自动启用\n- 开发环境下如下配置\n\n\n **sideEffects配置**\n \nwebpack.config.js 下的配置\n```js\n  \u002F\u002F webpack.config.js 下的配置\n  optimization: {\n    sideEffects: true,\u002F\u002F打开移除未使用的模块\n  }\n```\n\npackage.json下的配置：\n```js\n\u002F\u002F package.json的配置和webpack下的配置意义不同，此处只是标识代码没有副作用\n\"sideEffects\": false \u002F\u002F 标识代码没有副作用，webpack在打包时会删掉有副作用的代码\n```\n\n## 6.2 多入口打包 =\u003E 解决文件过大的问题\n#### 方案1：多个html-webpack-plugin\n- 依赖：\n\n```\n\u003E npm install html-webpack-plugin --save-dev\n```\n- 功能：\nentry 定义多个入口并使用多个 HtmlWebpackPlugin() 插件；具体参考示例源码；\n\n\n#### 方案2：使用auto-web-plugin插件按照目录生成html\n- 依赖：\n\n```\n\u003E npm install auto-web-plugin --save-dev\n```\n- 功能：（未完待续）\n\n```js\n\u002F\u002F ...\n```\n\n## 6.3 CodeSplit代码分片，按需加载 =\u003E 解决文件过大的问题\n- 依赖：无\n- 功能：使用动态加载语句：import('.\u002Fcomponents\u002Fbanner.js').then(banner =\u003E {})\n- 实践：通常和路由相结合，不需要其他配置\n\n```js\n\nconst render = () =\u003E {\n  const hash = window.location.hash || '#posts'\n  const mainElement = document.querySelector('.main')\n  mainElement.innerHTML = ''\n\n  if (hash === '#posts') {\n    \u002F\u002F mainElement.appendChild(posts())\n    \u002F\u002F \u002F* webpackChunkName: 'components' *\u002F为魔法注释，可用将两个模块合并到同一个文件名中\n    import(\u002F* webpackChunkName: 'components' *\u002F'.\u002Fposts\u002Fposts').then(({ default: posts }) =\u003E {\n      mainElement.appendChild(posts())\n    })\n  } else if (hash === '#album') {\n    \u002F\u002F mainElement.appendChild(album())\n    import(\u002F* webpackChunkName: 'components' *\u002F''.\u002Falbum\u002Falbum').then(({ default: album }) =\u003E {\n      mainElement.appendChild(album())\n    })\n  }\n}\n\nrender()\n\nwindow.addEventListener('hashchange', render)\n```\n\n- 配合VUE-ROUTER示例：（未完待续）\n\n```js\nconst routes = [\n  {\n    path: '\u002F',\n    name: 'Index',\n    component: Index\n  },\n  {\n    path: '\u002Fdetail\u002F:id',\n    name: 'Detail',\n    props: true,\n    \u002F\u002F route level code-splitting\n    \u002F\u002F this generates a separate chunk (about.[hash].js) for this route\n    \u002F\u002F which is lazy-loaded when the route is visited.\n    component: () =\u003E import(\u002F* webpackChunkName: \"detail\" *\u002F '..\u002Fviews\u002FDetail.vue')\n  }\n]\n```\n\n## 6.4 splitChunks，提取js公共代码\n- 依赖：无，直接在optimization中配置\n- 功能：取代了webpack4中的CommonsChunkPlugin，默认值是按需加载的 chunks；参考：https:\u002F\u002Fwebpack.docschina.org\u002Fplugins\u002Fsplit-chunks-plugin\u002F\n\n```js\noptimization: {\n    splitChunks: {\n        \u002F\u002F 自动提取所有公共模块到单独 bundle；可选配置有：all，async 和 initial。\n        \u002F\u002F 设置为 all 可能特别强大，因为这意味着 chunk 可以在异步和非异步 chunk 之间共享\n        chunks: 'all'\n    }\n},\n```\n\n## 6.5 MiniCssExtractPlugin，提取CSS到单个文件\n- 依赖：\n\n```\n\u003E npm install mini-css-extract-plugin --save-dev             =\u003E 将样式存放到单独的css文件中，取代style-loader\n\u003E npm install optimize-css-assets-webpack-plugin --save-dev  =\u003E 手动打开css压缩代码\n\u003E npm install terser-webpack-plugin --save-dev               =\u003E 手动打开js压缩代码\n```\n- 功能：\n\n1. 将css代码存放到单独的css文件中，是否也可以合并css文件？（待研究：https:\u002F\u002Fwebpack.docschina.org\u002Fplugins\u002Fmini-css-extract-plugin\u002F）\n2. 配合css-loader，不再需要style-loader；\n\n```js\nconst MiniCssExtractPlugin = require('mini-css-extract-plugin')\n\u002F\u002F ...\n\n  optimization: {\n    minimizer: [\u002F\u002F 使用了minimizer，webpack认为不再启动自动压缩js代码\n      new TerserWebpackPlugin(),            \u002F\u002F手动打开js压缩代码\n      new OptimizeCssAssetsWebpackPlugin()  \u002F\u002F手动打开css压缩代码\n    ]\n  },\n  module: {\n    rules: [\n      {\n        test: \u002F\\.css$\u002F,\n        use: [\n          \u002F\u002F 'style-loader', \u002F\u002F 将样式通过 style 标签注入\n          MiniCssExtractPlugin.loader, \u002F\u002F 将样式存放到单独的css文件中\n          'css-loader'\n        ]\n      }\n    ]\n  },\n  plugins: [\n    ...，\n    new MiniCssExtractPlugin()\n  ]\n```\n\n## 6.6 ExtractTextPlugin、MiniCssExtractPlugin哪个更好用？\n\n1. MiniCssExtractPlugin基于 webpack v4 的新特性（模块类型）构建，并且需要 webpack 4 才能正常工作。\n2. 与 extract-text-webpack-plugin 相比，MiniCssExtractPlugin：\n\u003E https:\u002F\u002Fwebpack.docschina.org\u002Fplugins\u002Fmini-css-extract-plugin\u002F\n- 异步加载\n- 没有重复的编译（性能）\n- 更容易使用\n- 特别针对 CSS 开发\n\n## 6.7 文件名hash，解决缓存带来的问题\n **webpack中有三种hash：** \n1. 项目级别：filename: '[name]-[hash].bundle.js' —— 项目中任何改动都会修改hash\n2. Chunk级别：filename: '[name]-[chunkhash].bundle.js' —— 同一路chunk改动会修改hash\n3. 内容级别：filename: '[name]-[contenthash].bundle.js' —— 文件发生变化时才会改变hash\n\n\n **最佳方案：** 使用contenthash:8，并且后面可以指定位数：8位。\n\n```js\n  output: {\n    filename: '[name]-[contenthash:8].bundle.js'\n  },\n  ...\n  plugins: [\n    ...,\n    new MiniCssExtractPlugin({\n      filename: '[name]-[contenthash:8].bundle.css'\n    })\n  ]\n\n```\n\n\n## 6.8 Happypack：多线程并行打包\nwebpack4 之后推荐使用 thread-loader；而且 happypack 已经没怎么维护了，和 vue-loader 配合也会有一些配置问题；\n\n\n## 6.9 其它提高构建性能的方案\n官方建议：https:\u002F\u002Fwebpack.docschina.org\u002Fguides\u002Fbuild-performance\u002F\n\n **如何对webpack构建性能进行分析：** \n\n参考文档：https:\u002F\u002Fjuejin.cn\u002Fpost\u002F6911519627772329991\n\n```\n\u003E npm install --save-dev speed-measure-webpack-plugin  =\u003E 分析 webpack 打包速度\n\u003E npm install --save-dev webpack-bundle-analyzer       =\u003E 分析 webpack 打包模块大小\n```\n **提升构建速度方案（主要的几个）：** \n\n1. 通过使用 include 字段减小打包范围\n2. 使用 DllPlugin 为更改不频繁的代码生成单独的打包文件；配置参考：https:\u002F\u002Fwebpack.docschina.org\u002Fplugins\u002Fdll-plugin\u002F\n3. 多使用分片按需加载功能，SplitChunksPlugin 配置；\n4. 使用 thread-loader，功能类似于happypack；创建多线程打包，配置参考：https:\u002F\u002Fwebpack.docschina.org\u002Floaders\u002Fthread-loader\u002F#root\n\n```\n1. 请仅在耗时的操作中使用 thread-loader，因为：在 worker 池中运行的 loader 是受到限制的；具体参考文档。\n2. 不要使用太多的 worker，因为 Node.js 的 runtime 和 loader 都有启动开销。最小化 worker 和 main process(主进程) 之间的模块传输。进程间通讯(IPC, inter process communication)是非常消耗资源的。\n```\n\n5. 使用配置项：cache，缓存生成的 webpack 模块和 chunk，来改善构建速度。cache 会在开发 模式被设置成 type: 'memory' 而且在 生产 模式 中被禁用。 参考：https:\u002F\u002Fwebpack.docschina.org\u002Fconfiguration\u002Fother-options\u002F#cache\n6. 开发阶段尽量使用 webpack-dev-server 在内存中构建\n7. 配置 devTool 生成映射文件时选择合适的选项\n8. \u002F\u002F ...\n\n# 7. 示例代码\nhttps:\u002F\u002Fgitee.com\u002Fymcdhr\u002Fe-demo\u002Ftree\u002Fmaster\u002Fwebpack-sample\n\n# 8. 参考资料：\nhttps:\u002F\u002Fwebpack.docschina.org\u002Fguides\u002F\nhttps:\u002F\u002Fwebpack.docschina.org\u002Fguides\u002Fbuild-performance\u002F\n\n[特别鸣谢：拉勾教育前端高薪训练营](https:\u002F\u002Fkaiwu.lagou.com\u002F)","published_at":"2021-07-11T18:21:57.780Z","updated_at":"2021-07-12T07:15:26.316Z"}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.aa04e74c.js" defer></script><script src="/assets/js/page--src-templates-blog-vue.a3da5a2e.js" defer></script>
+  </body>
+</html>
