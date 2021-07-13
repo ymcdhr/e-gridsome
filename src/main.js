@@ -15,6 +15,14 @@ export default function (Vue, { router, head, isClient }) {
   // 注册全部组件：在此位置注册插件
   Vue.use(ElementUI);
 
+  Vue.config.errorHandler = (err, vm, info) => {
+    console.log('进来啦~');
+    console.log('err：', err);
+    console.log('vm：', vm);
+    console.log('info：', info);
+
+  }
+
   // Set default layout as a global component
   // Vue.component('Layout', DefaultLayout)
 }

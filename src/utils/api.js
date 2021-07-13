@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { parse } from 'query-string'
 
 // const baseStrapi = "http://localhost:1337"
-const baseStrapi = "https://arsom72h.dongtaiyuming.net/"
+const baseStrapi = "https://arsom72h.dongtaiyuming.net"
 
 export const api = {
     giteeRepos: "https://gitee.com/api/v5/users/${username}/repos",
@@ -27,7 +27,7 @@ export const com = {
     regImg(text) {
         try{
             const imgs = text.match(/!\[(.*?)\]\((.*?)\)/g)
-            imgs.forEach(img=>{
+            imgs && imgs.forEach(img=>{
                 const url = img.replace(/!\[.*\]\(/g, '').replace(/\)/g,'')
                 text = text.replaceAll(url,api.strapi + url)
             })

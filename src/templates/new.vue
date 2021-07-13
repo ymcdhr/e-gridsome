@@ -1,5 +1,7 @@
 <template>
-    <Article v-if="article" :article="article" :isEdit="isEdit" />
+  <div>
+      <Article v-if="article" :article="article" :isEdit="isEdit" />
+  </div>
 </template>
 <page-query>
 query{
@@ -26,7 +28,6 @@ query{
 </page-query>
 
 <script>
-import { com } from "@/utils/api.js"
 import Article from '@/components/article.vue'
 
 export default {
@@ -43,31 +44,19 @@ export default {
   },
   computed: {
     article() {
-        const { username } = com.user()
+      try{
+        const blogs = this.$page.data.edges
 
-        const blogs = this.$page.data.edges.filter(edge=>edge.node.user.username === username)
-        console.log("new blogs:",blogs);
-        
         let max = blogs[0]
-
         blogs.forEach(item => {
             const time = this.unixTime(item.node.updated_at)
             max = time > this.unixTime(max.node.updated_at) ? item : max
         })
-
-        if(!max){
-          this.$message({
-             message: '请输入正确的url~~',
-            type: 'error'
-          })
-
-          if(typeof location !== "undefined")
-            location.href=location.origin + "/new?username=ymcdhr"
-          
-          return
-        }
-
         return max && max.node
+      }
+      catch(e){
+        console.error("new:",e)
+      }
     }
   }
 }

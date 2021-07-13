@@ -60,13 +60,18 @@ export default {
                 this.$nextTick(() => {
                     // console.log("$refs:", this.$refs)
                     // console.log("$textnode:", this.$refs['textnode'])
-                    const textnode = this.$refs['textnode']
-                    if(textnode){
-                        const { textarea = undefined } =  textnode.$refs
-                        if(textarea){
-                            const mdnode = this.$refs['mdnode']
-                            this.addScrollListen(textarea, mdnode)
+                    try{
+                        const textnode = this.$refs['textnode']
+                        if(textnode){
+                            const { textarea = undefined } =  textnode.$refs
+                            if(textarea){
+                                const mdnode = this.$refs['mdnode']
+                                this.addScrollListen(textarea, mdnode)
+                            }
                         }
+                    }
+                    catch(e){
+                        console.log("e article nextTick:",e)
                     }
                 });
             }
@@ -85,7 +90,12 @@ export default {
             return new Date(time).toLocaleDateString()
         },
         mdToHtml(text) {
-            return com.mdToHtml(text)
+            try{
+                return com.mdToHtml(text)
+            }
+            catch(e){
+                console.error("mdToHtml:",e)
+            }
         },
         onFullScreen() {
             this.isFullScreeen = !this.isFullScreeen

@@ -157,18 +157,19 @@ export default {
     }
   },
   async beforeMount() {
-    await this.getCurrentPage()
-
     // 当前访问的用户，理论上应该通过url或者其他方式传递；但是gridsomeurl不是很自由，先简单处理
     if(this.user.username){
       Cookie.set("user", this.user)
+      await this.getCurrentPage()
     }
     else{
       this.$message({
         message: '请输入正确的url~~',
         type: 'error'
       })
-      location.href=location.origin + "/new?username=ymcdhr"
+
+      if(typeof location !== "undefined")
+        location.href = location.origin + "/new?username=ymcdhr"
     }
 
     // 当前登录的用户
