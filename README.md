@@ -463,11 +463,42 @@ markdown-it + highlight.js => markdown 编辑器
 $nextTick 使用场景
 
 
-部署过后，stiapi 更新数据之后自动更新 gridsome 数据
 
-使用插件 vercel 
+##### 部署过后，strapi 更新数据之后自动更新 gridsome 数据
+
+1. 推送 gridsome 项目到 github
+2. 访问 https://vercel.com/，使用 github 账号登录，导入项目
+3. 导入项目时使用默认设置即可，它会默认执行 npm run build
+4. vercel 部署过后默认是 https，如果 接口是 http，需要配置代理：https://blog.csdn.net/u012961419/article/details/112369710；也可以配置一下 strapi 中间件。
+5. 
+
+#### strapi 设置 https
+
+
+##### stiapi 使用 pm2 启动
+```
+> pm2 start npm -- run start --name blog-backend
+```
 
 相关链接：
 - githu api：https://docs.github.com/en/rest
 - element-ui：https://element.eleme.cn/#/zh-CN/component/installation
 - v-blog：https://github-laziji.github.io/#/user/new/main
+
+
+
+
+配置 Gridsome 环境变量
+https://www.gridsome.cn/docs/environment-variables/
+
+在配置文件gridsome.config.js中使用变量：process.env.GRIDSOME_API_URL
+```
+apiURL: process.env.GRIDSOME_API_URL
+```
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0712/190101_4d8c4725_9130428.png "屏幕截图.png")
+
+
+配置api接口：
+baseStrapi
+src/utils/api.js
