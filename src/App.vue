@@ -158,7 +158,7 @@ export default {
   },
   async beforeMount() {
     // 当前访问的用户，理论上应该通过url或者其他方式传递；但是gridsomeurl不是很自由，先简单处理
-    if(this.user.username){
+    if(this.user.username && this.$route.fullPath !== "/"){
       Cookie.set("user", this.user)
       await this.getCurrentPage()
     }

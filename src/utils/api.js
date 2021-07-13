@@ -29,13 +29,20 @@ export const com = {
             const imgs = text.match(/!\[(.*?)\]\((.*?)\)/g)
             imgs && imgs.forEach(img=>{
                 const url = img.replace(/!\[.*\]\(/g, '').replace(/\)/g,'')
-                text = text.replaceAll(url,api.strapi + url)
+                text = text.replaceAll(url, baseStrapi + url)
+
+                // console.error(JSON.stringify({
+                //     baseStrapi,
+                //     url,
+                //     text
+                // }))
+
+                // console.error(url)
             })
         }
         catch(e){
             console.log("e:",e)
         }
-        
 
         return text
     },
@@ -50,7 +57,7 @@ export const com = {
             highlight: function (str, lang) {
               if (lang && hljs.getLanguage(lang)) {
                 try {
-                  return hljs.highlight(lang, str).value;
+                  return hljs.highlight(str,{ language: lang }).value;
                 } catch (__) {}
               }
           

@@ -26,7 +26,7 @@
                     v-model="article.content">
                 </el-input>
 
-                <div v-if="!isEdit || isFullScreeen" ref="mdnode" class="markdown-here-wrapper" v-html="mdToHtml(article.content)"></div>
+                <div v-if="!isEdit || isFullScreeen" ref="mdnode" class="markdown-here-wrapper" v-html="htmlContent"></div>
             </div>
         </div>
     </div>
@@ -84,6 +84,9 @@ export default {
         }
     },
     computed: {
+        htmlContent() {
+            return this.mdToHtml(this.article.content)
+        }
     },
     methods: {
         date(time) {
