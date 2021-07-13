@@ -4,6 +4,10 @@
 1. 1部分服务端渲染
 2. 1部分使用本地缓存
 
+
+https://e-gridsome.vercel.app/new?username=ymcdhr
+
+
 # 项目使用
 #### 安装
 ```
@@ -470,7 +474,14 @@ $nextTick 使用场景
 2. 访问 https://vercel.com/，使用 github 账号登录，导入项目
 3. 导入项目时使用默认设置即可，它会默认执行 npm run build
 4. vercel 部署过后默认是 https，如果 接口是 http，需要配置代理：https://blog.csdn.net/u012961419/article/details/112369710；也可以配置一下 strapi 中间件。
-5. 
+5. 在 vercel 中创建自动构建的钩子
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0713/230921_ac567511_9130428.png "屏幕截图.png")
+
+6. 在 Strapi 后台创建钩子
+
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0713/231209_9bce8cc0_9130428.png "屏幕截图.png")
+
 
 #### strapi 设置 https
 
