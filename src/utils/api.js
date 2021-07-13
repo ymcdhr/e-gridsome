@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { parse } from 'query-string'
 
 // const baseStrapi = "http://localhost:1337"
-const baseStrapi = process.env.GRIDSOME_API_URL
+const baseStrapi = process.env.HTTPS_API_URL
 
 export const api = {
     giteeRepos: "https://gitee.com/api/v5/users/${username}/repos",
